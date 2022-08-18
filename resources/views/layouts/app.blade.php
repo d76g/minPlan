@@ -21,6 +21,9 @@
             .mainColor {
                 color: var(--main-color);
             }
+            .bg-mainColor{
+                background-color: var(--main-color);
+            }
             .textColor{
                 color: var(--text-color);
             }
@@ -37,10 +40,9 @@
                 <img src="{{url('/images/MP-circle.png')}}" class="mr-3 h-6 sm:h-9" alt="MinPlan Logo">
                 <span class="self-center mainColor text-xl font-semibold whitespace-nowrap dark:text-white">MinPlan</span>
             </a>
-            <div class="mx-auto justify-items-cente md:block md:w-auto">
+            <div class="flex justify-center">
                 <ul class=" flex flex-row text-l gap-6 justify-center mainColor font-semibold">
                     <a href="#home" class="hover:bg-gray-100 p-2 rounded hover:dark:bg-gray-700 dark:text-white"><li>Home</li></a>
-                    <a href="#surveForm" class="hover:bg-gray-100 p-2 rounded hover:dark:bg-gray-700 dark:text-white"><li>Form</li></a>
                 </ul>
             </div>
             </div>
