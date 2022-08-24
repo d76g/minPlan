@@ -42,7 +42,7 @@
             </a>
             <div class="flex justify-center">
                 <ul class=" flex flex-row text-l gap-6 justify-center mainColor font-semibold">
-                    <a href="#home" class="hover:bg-gray-100 p-2 rounded hover:dark:bg-gray-700 dark:text-white"><li>Home</li></a>
+                    <a href="/" class="hover:bg-gray-100 p-2 rounded hover:dark:bg-gray-700 dark:text-white"><li>Home</li></a>
                 </ul>
             </div>
             </div>
