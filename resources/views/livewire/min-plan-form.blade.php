@@ -1,7 +1,7 @@
 <div class="relative bg-white rounded-lg text-left text-base w-11/12 mx-auto sm:text-lg overflow-hidden shadow-xl transform transition-all sm:my-8 sm:max-w-2xl sm:w-full sm:text-md">
-        <div class="w-auto pt-4 mx-auto  flex justify-between px-4  ">
+        <div class="w-auto pt-4 mx-auto flex justify-between px-4">
             <h4 class="text-[22px]"><i class="fa-solid fa-circle-info pr-2"></i>Fill the form</h4>
-            <i class="fa-solid fa-xmark text-red-500 hover:text-red-700 text-[24px] cursor-pointer" id="closeForm" wire:click="clearForm"></i>
+            <button id="closeForm" wire:click="clearForm"><img class="w-[30px] fill-red-500 cursor-pointer" src="{{url('/images/close-outline.svg')}}" alt="closeButton" ></button>
         </div>
         <form wire:submit.prevent="submit" class="w-auto pt-6 mx-auto">
             
@@ -245,15 +245,24 @@
             @if ($priority !== 'help')
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                 @if ($currentStep == 3 )
-                <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+                <div class="flex ">
+                    <button type="button"  class="w-1/2 mr-1 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-gray-400 text-base font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 3 ? 'block':'hidden'}}" wire:click="goBack">Back</button>
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+                </div>
                 @endif
                 @if ($priority === 'lookingAround' && $currentStep == 2 )
-                <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+                <div class="flex">
+                    <button type="button"  class="mr-1 w-1/2 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-gray-400 text-base font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" wire:click="goBack">Back</button>
+                    <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">Submit</button>
+                </div>
                 @endif
                 <div class="relative">
-                    <button type="button" id="closeFormBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 1 ? 'block':'hidden'}}" wire:click="stepOne">Next</button>
+                    <button type="button"  class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 1 ? 'block':'hidden'}}" wire:click="stepOne">Next</button>
                     @if ($priority === 'invited')
-                    <button type="button" id="closeFormBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 2 ? 'block':'hidden'}}" wire:click="stepTwo">Next</button>
+                    <div class="flex">
+                        <button type="button" id="closeFormBtn" class="mt-1 mr-1 w-1/2 inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-gray-400 text-base font-medium text-white hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 2 ? 'block':'hidden'}}" wire:click="goBack">Back</button>
+                        <button type="button" id="closeFormBtn" class="mt-1 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm {{$currentStep == 2 ? 'block':'hidden'}}" wire:click="stepTwo">Next</button>
+                    </div>
                     @endif
                 </div>
                 <button type="button" id="closeFormBtn" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-red-500 text-base font-medium text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" wire:click ="clearForm" >Cancel</button>

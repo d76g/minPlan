@@ -118,6 +118,10 @@ class MinPlanForm extends Component
     {
         $this->validateOnly($property);
     }
+    public function goBack()
+    {
+        $this->currentStep--;
+    }
     public function clearForm()
     {
         $this->priority = 'help';

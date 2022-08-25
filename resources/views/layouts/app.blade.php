@@ -7,7 +7,7 @@
         <title>MinPlan - onboarding</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap" rel="stylesheet">
         {{-- Font-Awesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -28,7 +28,8 @@
                 color: var(--text-color);
             }
             body {
-                font-family: Open Sans,Arial,sans-serif;
+                font-family: 'Urbanist', sans-serif;
+ 
             }
         </style>
         @livewireStyles

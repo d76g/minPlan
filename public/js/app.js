@@ -13,5 +13,5 @@
     const closeBtn = document.getElementById('closeFormBtn')
     closeBtn?.addEventListener('click', ()=>{
             const formContent = document.getElementById('formContent')
-            formContent.classList.add('invisible');
+            formContent.classList.toggle('invisible');
     })
