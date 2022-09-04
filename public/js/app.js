@@ -15,3 +15,17 @@
             const formContent = document.getElementById('formContent')
             formContent.classList.toggle('invisible');
     })
+
+//     function getElementId(){
+//         const getElId = document.querySelector('button');
+//         console.log(getElId.id);
+//     }
+    
+//     const alcoholBtn = document.getElementById('alcoholBtn')
+//     alcoholBtn.addEventListener('click',()=>{
+//         alcoholBtn.classList.remove('bg-gray-200')
+//         alcoholBtn.classList.add('bg-green-200')
+//     })
+//     const el = document.getElementsByTagName
+
+        
