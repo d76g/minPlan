@@ -1,31 +1,27 @@
-    const formBtn = document.getElementById('formBtn');
-    formBtn.addEventListener('click', ()=> {
-        const formContent = document.getElementById('formContent')
+
+    let openFormbtn = document.getElementById('formBtn');
+    let formContent = document.getElementById('formContent')
+
+    openFormbtn.addEventListener('click', ()=> {
+        
         formContent.classList.remove('invisible');
     })
 
-    const closeForm = document.getElementById('closeForm')
-    closeForm.addEventListener('click', ()=>{
-            const formContent = document.getElementById('formContent')
-            formContent.classList.add('invisible');
-    })
-
-    const closeBtn = document.getElementById('closeFormBtn')
+    let closeBtn = document.getElementById('closeFormBtn')
     closeBtn?.addEventListener('click', ()=>{
-            const formContent = document.getElementById('formContent')
             formContent.classList.toggle('invisible');
     })
 
-//     function getElementId(){
-//         const getElId = document.querySelector('button');
-//         console.log(getElId.id);
-//     }
+    const formInput = document.querySelectorAll('input');
     
-//     const alcoholBtn = document.getElementById('alcoholBtn')
-//     alcoholBtn.addEventListener('click',()=>{
-//         alcoholBtn.classList.remove('bg-gray-200')
-//         alcoholBtn.classList.add('bg-green-200')
-//     })
-//     const el = document.getElementsByTagName
+    formInput.forEach(item =>{
+        item.addEventListener('click',(e)=>{
+            
+            if(item.checked == true){
+                const inputLable = e.target.nextElementSibling.classList;
+                inputLable.toggle('bg-gray-100');}
+            // e.preventDefault();
+        })
+    })
 
-        
+    

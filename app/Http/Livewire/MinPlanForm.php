@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class MinPlanForm extends Component
 {
-    public string $priority = 'help';
+    public string $priority = '';
     public string $age = '';
     public string $email = '';
     public string $confirmSMS = '';
@@ -59,15 +59,24 @@ class MinPlanForm extends Component
     {
         $this->validate(
             [
+                'priority' => ['required'],
+            ],
+        );
+        $this->currentStep = 2;
+    }
+    public function stepTwo()
+    {
+        $this->validate(
+            [
                 'age' => ['required_if:priority,invited,lookingAround'],
             ],
             [
                 'age.required_if' => 'Please Select your age range...'
             ]
         );
-        $this->currentStep = 2;
+        $this->currentStep = 3;
     }
-    public function stepTwo()
+    public function stepThree()
     {
         $this->validate(
             [
@@ -78,9 +87,9 @@ class MinPlanForm extends Component
 
             ],
         );
-        $this->currentStep = 3;
+        $this->currentStep = 4;
     }
-    public function stepThree()
+    public function stepFour()
     {
         $this->validate(
             [
@@ -103,7 +112,7 @@ class MinPlanForm extends Component
             'needs_safty_plan' => $this->confirmSaftyplan,
         ]);
 
-        $this->priority = 'help';
+        $this->priority = 'invited';
         $this->email = '';
         $this->age = '';
         $this->phoneNumber = '';
@@ -120,11 +129,15 @@ class MinPlanForm extends Component
     }
     public function goBack()
     {
-        $this->currentStep--;
+        if ($this->currentStep == 1) {
+            $this->currentStep = 1;
+        } else {
+            $this->currentStep--;
+        }
     }
     public function clearForm()
     {
-        $this->priority = 'help';
+        $this->priority = '';
         $this->email = '';
         $this->age = '';
         $this->phoneNumber = '';
