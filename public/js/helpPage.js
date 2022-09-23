@@ -9,7 +9,7 @@ else {
 
 rope.addEventListener('click', ()=>{
      rope.classList.toggle('bg-gray-200')
-     rope.classList.toggle('bg-green-300')
+     rope.classList.toggle('bg-gray-300')
     sessionStorage.setItem('ropebgColor', rope.classList)
 })
 // Med Button
@@ -23,7 +23,7 @@ else {
 
 med.addEventListener('click', ()=>{
     med.classList.toggle('bg-gray-200')
-    med.classList.toggle('bg-green-300')
+    med.classList.toggle('bg-gray-300')
     sessionStorage.setItem('medbgColor', med.classList)
 })
 // sharp Button
@@ -36,7 +36,7 @@ else {
 }
 sharp.addEventListener('click', ()=>{
     sharp.classList.toggle('bg-gray-200')
-    sharp.classList.toggle('bg-green-300')
+    sharp.classList.toggle('bg-gray-300')
     sessionStorage.setItem('sharpbgColor', sharp.classList)
 })
 // Alcohol Button
@@ -49,7 +49,7 @@ else {
 }
 alcohol.addEventListener('click', ()=>{
     alcohol.classList.toggle('bg-gray-200')
-    alcohol.classList.toggle('bg-green-300')
+    alcohol.classList.toggle('bg-gray-300')
     sessionStorage.setItem('alcoholbgColor', alcohol.classList)
 })
 // Razor Button
@@ -62,7 +62,7 @@ else {
 }
 razor.addEventListener('click', ()=>{
     razor.classList.toggle('bg-gray-200')
-    razor.classList.toggle('bg-green-300')
+    razor.classList.toggle('bg-gray-300')
     sessionStorage.setItem('razorbgColor', razor.classList)
 })
 // Firearms button
@@ -75,6 +75,6 @@ else {
 }
 firearms.addEventListener('click', ()=>{
     firearms.classList.toggle('bg-gray-200')
-    firearms.classList.toggle('bg-green-300')
+    firearms.classList.toggle('bg-gray-300')
     sessionStorage.setItem('firearmsbgColor', firearms.classList)
 })

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('min_plan_form_models', function (Blueprint $table) {
             $table->id();
+            $table->string('country');
             $table->string('priority');
             $table->string('age')->nullable();
             $table->boolean('receive_sms')->nullable();

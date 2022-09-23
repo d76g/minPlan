@@ -10,14 +10,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
                 {{-- Font-Awesome --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+        {{-- Google Icons --}}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <!-- Styles -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         @vite('resources/css/app.css', 'resources/js/app.js')
         <style>
             :root{
-                --main-color:rgb(66, 192, 183);
-                --text-color:rgba(0,0,0,0.6);
+                --main-color:#41c0b7;
                 --box-color:#d6ede7;
+                --button-color:#d1d1d1;
             }
             .mainColor {
                 color: var(--main-color);
@@ -28,14 +30,14 @@
             .box-bg{
                 background-color: var(--box-color);
             }
-            .textColor{
-                color: var(--text-color);
+            .boxColor{
+                background: var(--box-color);
             }
             body {
                 font-family: 'Comfortaa', cursive;
-            }
-            clicked {
-                background-color: antiquewhite;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
         </style>
         @livewireStyles

@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\minPlanFormModel;
 use Livewire\Component;
+use Illuminate\Http\Request;
+use App\Models\minPlanFormModel;
+use Illuminate\Support\Facades\App;
 
 class MinPlanForm extends Component
 {
@@ -15,6 +17,8 @@ class MinPlanForm extends Component
     public string $phoneNumber = '';
     public string $confirmSaftyplan = '';
     public $currentStep = 1;
+    public string $country = '';
+    public string $language = '';
 
     public function render()
     {
@@ -27,6 +31,7 @@ class MinPlanForm extends Component
         'confirmSMS' => ['required_if:priority,invited'],
         'confirmEmail' => ['required_if:priority,invited'],
         'confirmSaftyplan' => ['required_if:priority,lookingAround,'],
+        'country' => ['required']
     ];
     protected $messages = [
         'confirmEmail.required_if' => 'Please Select One Choose..',
@@ -46,6 +51,7 @@ class MinPlanForm extends Component
                 'phoneNumber' => ['required_if:confirmSMS,yes'],
                 'confirmSMS' => ['required_if:priority,invited,'],
                 'confirmSaftyplan' => ['required_if:priority,lookingAround'],
+                'country' => ['required']
             ],
             [
                 'phoneNumber.required_if' => 'The :attribute cannot be empty.',
@@ -55,6 +61,21 @@ class MinPlanForm extends Component
             ],
         );
     }
+    public function welcomePage()
+    {
+        $this->currentStep = 2;
+    }
+    public function infoPage()
+    {
+        $this->currentStep = 3;
+    }
+    public function getCountry()
+    {
+        $this->validate([
+            'country' => ['required'],
+        ]);
+        $this->currentStep = 4;
+    }
     public function stepOne()
     {
         $this->validate(
@@ -62,7 +83,7 @@ class MinPlanForm extends Component
                 'priority' => ['required'],
             ],
         );
-        $this->currentStep = 2;
+        $this->currentStep = 5;
     }
     public function stepTwo()
     {
@@ -74,7 +95,7 @@ class MinPlanForm extends Component
                 'age.required_if' => 'Please Select your age range...'
             ]
         );
-        $this->currentStep = 3;
+        $this->currentStep = 6;
     }
     public function stepThree()
     {
@@ -87,7 +108,7 @@ class MinPlanForm extends Component
 
             ],
         );
-        $this->currentStep = 4;
+        $this->currentStep = 7;
     }
     public function stepFour()
     {
@@ -103,6 +124,7 @@ class MinPlanForm extends Component
         $this->validate();
 
         $saveInput = minPlanFormModel::create([
+            'country' => $this->country,
             'priority' => $this->priority,
             'age' => $this->age,
             'email' => $this->email,
@@ -120,6 +142,7 @@ class MinPlanForm extends Component
         $this->confirmEmail = '';
         $this->confirmSaftyplan = '';
         $this->currentStep = 1;
+        $this->country = '';
 
         session()->flash('message', 'Form Submitted'); // Will add redirect to a page or pop up a message.
     }
@@ -144,6 +167,12 @@ class MinPlanForm extends Component
         $this->confirmSMS = '';
         $this->confirmEmail = '';
         $this->confirmSaftyplan = '';
-        $this->currentStep = 1;
+        $this->currentStep = 4;
     }
+    public function change()
+    {
+        App::setLocale($this->language);
+        session()->put('locale', $this->language);
+    }
+    protected $listeners = ['language' => '$refresh'];
 }

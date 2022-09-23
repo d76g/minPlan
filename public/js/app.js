@@ -1,27 +1,35 @@
 
-    let openFormbtn = document.getElementById('formBtn');
-    let formContent = document.getElementById('formContent')
+    // let openFormbtn = document.getElementById('formBtn');
+    // let formContent = document.getElementById('formContent')
 
-    openFormbtn.addEventListener('click', ()=> {
+    // openFormbtn.addEventListener('click', ()=> {
         
-        formContent.classList.remove('invisible');
-    })
+    //     formContent.classList.remove('invisible');
+    // })
 
-    let closeBtn = document.getElementById('closeFormBtn')
-    closeBtn?.addEventListener('click', ()=>{
-            formContent.classList.toggle('invisible');
-    })
-
-    const formInput = document.querySelectorAll('input');
-    
-    formInput.forEach(item =>{
-        item.addEventListener('click',(e)=>{
-            
-            if(item.checked == true){
-                const inputLable = e.target.nextElementSibling.classList;
-                inputLable.toggle('bg-gray-100');}
-            // e.preventDefault();
+    // let closeBtn = document.getElementById('closeFormBtn')
+    // closeBtn?.addEventListener('click', ()=>{
+    //         formContent.classList.toggle('invisible');
+    // })
+    function changeColor(){
+        const formInput = document.querySelector('label');
+        formInput.addEventListener('click',()=>{
+            formInput.classList.add('bg-mainColor')
         })
-    })
-
+    }
+    
+    
+    
+    
+    // for (let index = 0; index < formInput.length; index++) {
+    //     formInput.forEach(item =>{
+    //         item.addEventListener('click',(e)=>{
+    //             if(item.checked){
+    //                 const inputLable = e.target.nextElementSibling.classList;
+    //                 inputLable.toggle('bg-gray-100');
+    //             }
+    //         })
+    //     })
+    
+    // }
     

@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\minPlanFormModel;
+use App\Http\Livewire\MinPlanForm;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\LangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/form');
 });
+
+Route::get('/form', MinPlanForm::class)->name('form');
+
 Route::get('/help', function () {
     return view('helpPage');
 })->name('help');

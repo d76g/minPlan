@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8ea869e121f056378fc07a377687b1f0",
+    "content-hash": "1fcf03927664343bba5ea502e697b58d",
     "packages": [
         {
             "name": "brick/math",
@@ -568,16 +568,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.4.5",
+            "version": "7.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "1dd98b0564cb3f6bd16ce683cb755f94c10fbd82"
+                "reference": "b50a2a1251152e43f6a37f0fa053e730a67d25ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/1dd98b0564cb3f6bd16ce683cb755f94c10fbd82",
-                "reference": "1dd98b0564cb3f6bd16ce683cb755f94c10fbd82",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/b50a2a1251152e43f6a37f0fa053e730a67d25ba",
+                "reference": "b50a2a1251152e43f6a37f0fa053e730a67d25ba",
                 "shasum": ""
             },
             "require": {
@@ -592,10 +592,10 @@
                 "psr/http-client-implementation": "1.0"
             },
             "require-dev": {
-                "bamarni/composer-bin-plugin": "^1.4.1",
+                "bamarni/composer-bin-plugin": "^1.8.1",
                 "ext-curl": "*",
                 "php-http/client-integration-tests": "^3.0",
-                "phpunit/phpunit": "^8.5.5 || ^9.3.5",
+                "phpunit/phpunit": "^8.5.29 || ^9.5.23",
                 "psr/log": "^1.1 || ^2.0 || ^3.0"
             },
             "suggest": {
@@ -605,8 +605,12 @@
             },
             "type": "library",
             "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": false
+                },
                 "branch-alias": {
-                    "dev-master": "7.4-dev"
+                    "dev-master": "7.5-dev"
                 }
             },
             "autoload": {
@@ -672,7 +676,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.4.5"
+                "source": "https://github.com/guzzle/guzzle/tree/7.5.0"
             },
             "funding": [
                 {
@@ -688,7 +692,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-20T22:16:13+00:00"
+            "time": "2022-08-28T15:39:27+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -2891,6 +2895,85 @@
                 }
             ],
             "time": "2022-08-05T17:58:37+00:00"
+        },
+        {
+            "name": "stichoza/google-translate-php",
+            "version": "v4.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Stichoza/google-translate-php.git",
+                "reference": "ea96d2ca42af3e40890cd0ca043d1c3efb46f292"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/ea96d2ca42af3e40890cd0ca043d1c3efb46f292",
+                "reference": "ea96d2ca42af3e40890cd0ca043d1c3efb46f292",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "~6.0|~7.0",
+                "php": "^7.1|^8"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stichoza\\GoogleTranslate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Levan Velijanashvili",
+                    "email": "me@stichoza.com"
+                }
+            ],
+            "description": "Free Google Translate API PHP Package",
+            "homepage": "http://github.com/Stichoza/google-translate-php",
+            "keywords": [
+                "google",
+                "php",
+                "translate",
+                "translator"
+            ],
+            "support": {
+                "issues": "https://github.com/Stichoza/google-translate-php/issues",
+                "source": "https://github.com/Stichoza/google-translate-php/tree/v4.1.6"
+            },
+            "funding": [
+                {
+                    "url": "https://btc.com/bc1qc25j4x7yahghm8nnn6lypnw59nptylsw32nkfl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://www.paypal.me/stichoza",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://ko-fi.com/stichoza",
+                    "type": "ko_fi"
+                },
+                {
+                    "url": "https://liberapay.com/stichoza",
+                    "type": "liberapay"
+                },
+                {
+                    "url": "https://opencollective.com/stichoza",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://www.patreon.com/stichoza",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-01-25T16:55:34+00:00"
         },
         {
             "name": "symfony/console",
