@@ -14,7 +14,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <!-- Styles -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        @vite('resources/css/app.css', 'resources/js/app.js')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @vite('resources/css/app.css','resources/js/app.js')
         <style>
             :root{
                 --main-color:#41c0b7;
@@ -45,8 +46,7 @@
     <body class="antialiased">
         
             {{$slot}}
-        
         @livewireScripts
-        
+        @stack('scripts')
     </body>
 </html>

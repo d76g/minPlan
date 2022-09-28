@@ -24,3 +24,6 @@ Route::get('/form', MinPlanForm::class)->name('form');
 Route::get('/help', function () {
     return view('helpPage');
 })->name('help');
+Route::get('/underagehelp', function () {
+    return view('underageHelp');
+})->name('underageHelp');

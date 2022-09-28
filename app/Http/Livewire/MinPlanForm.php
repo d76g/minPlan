@@ -61,6 +61,8 @@ class MinPlanForm extends Component
             ],
         );
     }
+
+
     public function welcomePage()
     {
         $this->currentStep = 2;
@@ -69,8 +71,12 @@ class MinPlanForm extends Component
     {
         $this->currentStep = 3;
     }
+    protected $listeners = [
+        'getCountry'
+    ];
     public function getCountry()
     {
+
         $this->validate([
             'country' => ['required'],
         ]);
@@ -123,7 +129,7 @@ class MinPlanForm extends Component
     {
         $this->validate();
 
-        $saveInput = minPlanFormModel::create([
+        minPlanFormModel::create([
             'country' => $this->country,
             'priority' => $this->priority,
             'age' => $this->age,
@@ -132,6 +138,13 @@ class MinPlanForm extends Component
             'receive_sms' => $this->confirmSMS,
             'receive_email' => $this->confirmEmail,
             'needs_safty_plan' => $this->confirmSaftyplan,
+        ]);
+
+        $this->dispatchBrowserEvent('submit', [
+            'type' => 'success',
+            'title' => 'Form Submitted, stay toned.',
+            'icon' => 'success',
+            'iconColor' => 'green',
         ]);
 
         $this->priority = 'invited';
@@ -143,8 +156,6 @@ class MinPlanForm extends Component
         $this->confirmSaftyplan = '';
         $this->currentStep = 1;
         $this->country = '';
-
-        session()->flash('message', 'Form Submitted'); // Will add redirect to a page or pop up a message.
     }
     public function update($property)
     {
@@ -173,6 +184,6 @@ class MinPlanForm extends Component
     {
         App::setLocale($this->language);
         session()->put('locale', $this->language);
+        return $this->currentStep;
     }
-    protected $listeners = ['language' => '$refresh'];
 }
