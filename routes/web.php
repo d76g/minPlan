@@ -18,6 +18,12 @@ use App\Http\Controllers\LangController;
 Route::get('/', function () {
     return redirect('/form');
 });
+Route::get('/relative-advice', function () {
+    return view('relativeAdvice');
+});
+Route::get('/relative-advice/advice', function () {
+    return view('advices');
+});
 
 Route::get('/form', MinPlanForm::class)->name('form');
 

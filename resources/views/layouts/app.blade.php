@@ -13,6 +13,7 @@
         {{-- Google Icons --}}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <!-- Styles -->
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @vite('resources/css/app.css','resources/js/app.js')
@@ -40,6 +41,7 @@
                 padding: 0;
                 box-sizing: border-box;
             }
+            [x-cloak] { display: none !important; }
         </style>
         @livewireStyles
     </head>
