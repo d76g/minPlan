@@ -28,6 +28,9 @@
         </div>
         <div class="flex flex-col items-center justify-center">
             <p class="py-2 text-jusify">Remove yourself from locations <br> feel unsafe or maybe triggering.</p>
+            <a href="/relative-advice">
+                <button class="my-1 p-4 bg-blue-400 rounded-md text-white hover:bg-blue-500 transition ease-in-out hover:scale-105">Need more advices?</button>
+            </a>
         </div>
     </div>
     <div class="relative sm:hidden">
