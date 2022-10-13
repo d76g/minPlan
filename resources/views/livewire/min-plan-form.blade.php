@@ -147,9 +147,7 @@
                 <div class="w-auto {{$currentStep == 4 ? 'block' : 'hidden'}} flex justify-center content-center" id="step-4">
                     <div class="flex px-2 content-center justify-center text-xs w-44 h-40">
                         <div class="flex flex-col py-2 content-center justify-center ">
-                            
                             <p class="my-2 text-center">What is your main priorities right now ?</p>
-                            
                             <input type="radio" id="invited" value="invited" name="priority" wire:model="priority" class="hidden" onclick="changeColor();">
                             <label for="invited" id="invited-label" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
                                     Invited by Someone
@@ -178,30 +176,31 @@
                         </div>
                     </div>   
                     <div class="flex px-2 gap-2 mb-2 content-center justify-center">
-                        <div  class="flex flex-col py-2 content-center justify-center">
+                        <div class="flex flex-col py-2 content-center justify-center">
                             <p class="my-2 text-center">Tell us your age to help you better</p>
                             <p>{{$age}}</p>
-                            <div x-data='{showText : false}' class="flex flex-col content-center justify-center">
-                                <input type="radio" value="14-17" name="age" wire:model="age" class="hidden" id="age">
-                                <label @click=" showText = ! showText" for="age" id="ageLabel" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
+
+                            <div x-data="{showText : false}" class="flex flex-col content-center justify-center">
+                                <input type="radio" name="age" wire:model="age" value="14-17" class="hidden" id="age14to17">
+                                <label @click =" showText = ! showText" for="age14to17" id="ageLabel" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
                                         14-17
                                 </label>
                                 <p x-show="showText" class="text-xs text-center" id="adviceText">You need more advice, <a class="text-blue-500 underline" href="/relative-advice">click here</a>.</p>
                             </div>
-                            <input type="radio" value="18-25" name="age" wire:model="age" class="hidden" id="age">
-                            <label for="age" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
+                            <input type="radio" name="age" wire:model="age" value="18-25" class="hidden" id="age18to25">
+                            <label for="age18to25" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
                                 18 - 25
                             </label>
-                            <input type="radio" value="26-39" name="age" wire:model="age" class="hidden" id="age">
-                            <label for="age" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <input type="radio" value="26-39" name="age" wire:model="age" class="hidden" id="age26to39">
+                            <label for="age26to39" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                 26 - 39
                             </label>
-                            <input type="radio" value="40-64" name="age" wire:model="age" class="hidden" id="age">
-                            <label for="age" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <input type="radio" value="40-64" name="age" wire:model="age" class="hidden" id="age40to64">
+                            <label for="age40to64" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                 40 - 64
                             </label>
-                            <input type="radio" value="65+" name="age" wire:model="age" class="hidden" id="age">
-                            <label for="age" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <input type="radio" value="65+" name="age" wire:model="age" class="hidden" id="age65">
+                            <label for="age65" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                65+
                             </label>
                             

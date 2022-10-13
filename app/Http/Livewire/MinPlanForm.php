@@ -95,10 +95,10 @@ class MinPlanForm extends Component
     {
         $this->validate(
             [
-                'age' => ['required_if:priority,invited,lookingAround'],
+                'age' => ['required'],
             ],
             [
-                'age.required_if' => 'Please Select your age range...'
+                'age.required' => 'Please Select your age range...'
             ]
         );
         $this->currentStep = 6;
