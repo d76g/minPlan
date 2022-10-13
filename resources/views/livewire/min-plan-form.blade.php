@@ -180,6 +180,7 @@
                     <div class="flex px-2 gap-2 mb-2 content-center justify-center">
                         <div  class="flex flex-col py-2 content-center justify-center">
                             <p class="my-2 text-center">Tell us your age to help you better</p>
+                            <p>{{$age}}</p>
                             <div x-data='{showText : false}' class="flex flex-col content-center justify-center">
                                 <input type="radio" value="14-17" name="age" wire:model="age" class="hidden" id="age">
                                 <label @click=" showText = ! showText" for="age" id="ageLabel" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
