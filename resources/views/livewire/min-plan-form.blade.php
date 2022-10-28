@@ -1,3 +1,4 @@
+@section('title','Onboarding Form')
 <div class="flex flex-col w-full h-screen sm:text-lg overflow-hidden sm:text-md ">
     <div class="flex justify-end w-full h-auto">
         @php
@@ -7,9 +8,9 @@
         @endphp 
 
         <div class="flex ">
-        <div class="hidden" id="langMenu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-            <select name="lang" id="langs" class="bg-gray-100 rounded-lg py-2 border-slate-500 text-sm mr-2 mt-2 changeLang"
-             wire:model='language' wire:click='change' >
+        <div x-data="{ showDropdown: false}" class="flex flex-row-reverse" id="langMenu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+            <button @click="showDropdown = ! showDropdown " class="mt-4 mr-4"><span class="material-icons-outlined mainColor">translate</span></button>
+            <select x-show="showDropdown" x-cloak x-transition name="lang" id="langs" class="bg-gray-100 rounded-lg py-2 border-slate-500 text-sm mr-2 mt-2 changeLang" wire:model='language' wire:click='change'>
                 <option class="bg-gray-100" value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
                 <option class="bg-gray-100" value="fr" {{ session()->get('locale') == 'fr' ? 'selected' : '' }}>France</option>
                 <option class="bg-gray-100" value="da" {{ session()->get('locale') == 'da' ? 'selected' : '' }}>Danish</option>
@@ -19,10 +20,6 @@
                 <option class="bg-gray-100" value="rw" {{ session()->get('locale') == 'rw' ? 'selected' : '' }}>Kinyarwanda</option>
                 <option class="bg-gray-100" value="ur" {{ session()->get('locale') == 'ur' ? 'selected' : '' }}>Urdu</option>
             </select>
-        </div>
-        <div class="flex flex-col mt-2 mr-4 mainColor">
-            <button id="langBtn"><span class="material-icons-outlined">translate</span></button>
-            <p>{{session()->get('locale')}}</p>
         </div>
     </div>    
     </div>    
@@ -40,63 +37,18 @@
                 <a href="/help"><span class="material-icons-outlined text-orange-300 text-5xl">health_and_safety</span></a>
             </div>
             <div class="w-44 text-xs">
-                <p class="mb-2 text-center">Press the emergency shield if you need an acute help</p>
+                <p class="mb-2 text-center">Press the emergency shield if you are in an emergency</p>
                 <p class="mt-4 text-center">If you are not in a hurry please tell us, why you are here:</p>
             </div>
         </div>
     {{-- Form --}}
     <div class="w-60 sm:w-72 mx-auto">
-            {{-- Steps --}}
-            {{-- <div class="w-auto {{$currentStep >= 4 ? 'block' : 'hidden'}} flex justify-center text-sm my-2">
-                <div class="flex w-auto content-center justify-center mx-2 my-4">
-                    <div class="flex flex-col mx-2 justify-center items-center sm:mx-8">
-                        <p class="text-center text-xs">Personal Information</p>
-                        @if ($priority === 'needhelp')
-                        <p href="#step-1" class="h-6 w-12 rounded text-black flex justify-center items-center my-1">{{$currentStep}} of 6</p>
-
-                        @else
-                        <p type="button" class="h-6 w-12 rounded text-black flex justify-center items-center my-1">{{$currentStep}} of 7</p>
-                        @endif
-                        
-
-                            @if ($currentStep == 4)
-                            <div class="w-64 h-1 bg-gray-200 rounded mt-1">
-                                @if ($priority === 'needhelp')
-                                    <div class="w-1/4 h-1 bg-gray-400 rounded"></div>
-                                @else
-                                    <div class="w-1/4 h-1 bg-gray-400 rounded"></div>
-                                @endif
-                            </div>
-                            @endif
-                            @if ($currentStep == 5)
-                            <div class="w-64 h-1 bg-gray-200 rounded mt-1">
-                                <div class="w-3/4 h-1 bg-gray-400 rounded"></div>
-                            </div>
-                            @endif
-                            @if ($currentStep == 6)
-                            <div class="w-64 h-1 bg-gray-200 rounded mt-1">
-                                @if ($priority === 'needhelp')
-                                    <div class="w-64 h-1 bg-gray-400 rounded"></div>
-                                @else
-                                    <div class="w-3/4 h-1 bg-gray-400 rounded"></div>
-                                @endif
-                            </div>
-                            @endif
-                            @if ($currentStep == 7)
-                            <div class="w-64 h-1 bg-gray-200 rounded mt-1">
-                                <div class="w-64 h-1 bg-gray-400 rounded"></div>
-                            </div>
-                            @endif
-                        
-                    </div>
-                </div>
-            </div> --}}
             {{-- Welcome Page --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}}" id="step-1">
                 <div class="flex px-2 gap-2 mb-2 content-center justify-center text-sm">
                     <div class="flex flex-col py-2 content-center justify-center ">
                         <p class="my-2 text-center w-18">
-                            {{GoogleTranslate::trans('We are here to help you a time of crisis',session()->get('locale'))}}</p>
+                            {{GoogleTranslate::trans('We are here to help in a time of crisis',session()->get('locale'))}}</p>
                     </div>
                     
                 </div>
@@ -119,19 +71,11 @@
                         <p class="my-2 text-center w-54">
                             {{GoogleTranslate::trans('To provide the best Information we need to know which country you are in:',session()->get('locale'))}}</p>
                         <div class="flex flex-col justify-center items-center pt-4">
-                            {{-- @livewire('country-list', ['country' => $country]) --}}
+                            
                             <label for="country" class="pb-2">{{GoogleTranslate::trans('Choose your country',session()->get('locale'))}}</label>
-                            <select wire:model.prevent="country"  id="country" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer" name="country">
-                                <option selected>{{GoogleTranslate::trans('select country',session()->get('locale'))}}</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AX">Aland Islands</option>
-                                <option value="AL">Albania</option>
-                                <option value="DZ">Algeria</option>
-                                <option value="AS">American Samoa</option>
-                                <option value="AD">Andorra</option>
-                                <option value="AO">Angola</option>
-                                <option value="AI">Anguilla</option>
-                                <option value="AQ">Antarctica</option>
+                            <select wire:model.prevent="country"  id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer text-sm" name="country">
+                                <option selected>{{GoogleTranslate::trans('Select Country',session()->get('locale'))}}</option>
+                                <option value="AF">Afghanistan</option><option value="AX">Aland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option> <option value="AS">American Samoa</option> <option value="AD">Andorra</option> <option value="AO">Angola</option> <option value="AI">Anguilla</option> <option value="AQ">Antarctica</option> <option value="AG">Antigua and Barbuda</option> <option value="AR">Argentina</option> <option value="AM">Armenia</option> <option value="AW">Aruba</option> <option value="AU">Australia</option> <option value="AT">Austria</option> <option value="AZ">Azerbaijan</option> <option value="BS">Bahamas</option> <option value="BH">Bahrain</option> <option value="BD">Bangladesh</option> <option value="BB">Barbados</option> <option value="BY">Belarus</option> <option value="BE">Belgium</option> <option value="BZ">Belize</option> <option value="BJ">Benin</option> <option value="BM">Bermuda</option> <option value="BT">Bhutan</option> <option value="BO">Bolivia</option> <option value="BQ">Bonaire</option> <option value="BA">Bosnia and Herzegovina</option> <option value="BW">Botswana</option> <option value="BV">Bouvet Island</option> <option value="BR">Brazil</option> <option value="BN">Brunei Darussalam</option> <option value="BG">Bulgaria</option> <option value="BF">Burkina Faso</option> <option value="BI">Burundi</option> <option value="KH">Cambodia</option> <option value="CM">Cameroon</option> <option value="CA">Canada</option> <option value="CV">Cape Verde</option> <option value="KY">Cayman Islands</option> <option value="CF">Central African Republic</option> <option value="TD">Chad</option> <option value="CL">Chile</option> <option value="CN">China</option> <option value="CO">Colombia</option> <option value="KM">Comoros</option> <option value="CG">Congo</option> <option value="CR">Costa Rica</option> <option value="CI">Cote D'Ivoire</option> <option value="HR">Croatia</option> <option value="CU">Cuba</option> <option value="CW">Curacao</option> <option value="CY">Cyprus</option> <option value="CZ">Czech Republic</option> <option value="DK">Denmark</option> <option value="DJ">Djibouti</option> <option value="DM">Dominica</option> <option value="DO">Dominican Republic</option> <option value="EC">Ecuador</option> <option value="EG">Egypt</option> <option value="SV">El Salvador</option> <option value="GQ">Equatorial Guinea</option> <option value="ER">Eritrea</option> <option value="EE">Estonia</option> <option value="ET">Ethiopia</option> <option value="FO">Faroe Islands</option> <option value="FJ">Fiji</option> <option value="FI">Finland</option> <option value="FR">France</option> <option value="GA">Gabon</option> <option value="GM">Gambia</option> <option value="GE">Georgia</option> <option value="DE">Germany</option> <option value="GH">Ghana</option> <option value="GI">Gibraltar</option> <option value="GR">Greece</option> <option value="GL">Greenland</option> <option value="GD">Grenada</option> <option value="GP">Guadeloupe</option> <option value="GU">Guam</option> <option value="GT">Guatemala</option> <option value="GG">Guernsey</option> <option value="GN">Guinea</option> <option value="GW">Guinea-Bissau</option> <option value="GY">Guyana</option> <option value="HT">Haiti</option> <option value="HN">Honduras</option> <option value="HK">Hong Kong</option> <option value="HU">Hungary</option> <option value="IS">Iceland</option> <option value="IN">India</option> <option value="ID">Indonesia</option> <option value="IR">Iran</option> <option value="IQ">Iraq</option> <option value="IE">Ireland</option> <option value="IM">Isle of Man</option> <option value="IT">Italy</option> <option value="JM">Jamaica</option> <option value="JP">Japan</option> <option value="JE">Jersey</option> <option value="JO">Jordan</option> <option value="KZ">Kazakhstan</option> <option value="KE">Kenya</option> <option value="KI">Kiribati</option> <option value="KP">Korea</option> <option value="XK">Kosovo</option> <option value="KW">Kuwait</option> <option value="KG">Kyrgyzstan</option> <option value="LV">Latvia</option> <option value="LB">Lebanon</option> <option value="LS">Lesotho</option> <option value="LR">Liberia</option> <option value="LY">Libyan</option> <option value="LI">Liechtenstein</option> <option value="LT">Lithuania</option> <option value="LU">Luxembourg</option> <option value="MO">Macao</option> <option value="MK">Macedonia</option> <option value="MG">Madagascar</option> <option value="MW">Malawi</option> <option value="MY">Malaysia</option> <option value="MV">Maldives</option> <option value="ML">Mali</option> <option value="MT">Malta</option> <option value="MQ">Martinique</option> <option value="MR">Mauritania</option> <option value="MU">Mauritius</option> <option value="YT">Mayotte</option> <option value="MX">Mexico</option> <option value="FM">Micronesia</option> <option value="MD">Moldova</option> <option value="MC">Monaco</option> <option value="MN">Mongolia</option> <option value="ME">Montenegro</option> <option value="MS">Montserrat</option> <option value="MA">Morocco</option> <option value="MZ">Mozambique</option> <option value="MM">Myanmar</option> <option value="NA">Namibia</option> <option value="NR">Nauru</option> <option value="NP">Nepal</option> <option value="NL">Netherlands</option> <option value="NC">New Caledonia</option> <option value="NZ">New Zealand</option> <option value="NI">Nicaragua</option> <option value="NE">Niger</option> <option value="NG">Nigeria</option> <option value="NU">Niue</option> <option value="NF">Norfolk Island</option> <option value="NO">Norway</option> <option value="OM">Oman</option> <option value="PK">Pakistan</option> <option value="PW">Palau</option> <option value="PS">Palestinian</option> <option value="PA">Panama</option> <option value="PG">Papua New Guinea</option> <option value="PY">Paraguay</option> <option value="PE">Peru</option> <option value="PH">Philippines</option> <option value="PN">Pitcairn</option> <option value="PL">Poland</option> <option value="PT">Portugal</option> <option value="PR">Puerto Rico</option> <option value="QA">Qatar</option> <option value="RE">Reunion</option> <option value="RO">Romania</option> <option value="RU">Russian</option> <option value="RW">Rwanda</option> <option value="WS">Samoa</option> <option value="SM">San Marino</option> <option value="SA">Saudi Arabia</option> <option value="SN">Senegal</option> <option value="RS">Serbia</option> <option value="CS">Serbia and Montenegro</option> <option value="SC">Seychelles</option> <option value="SL">Sierra Leone</option> <option value="SG">Singapore</option> <option value="SX">Sint Maarten</option> <option value="SK">Slovakia</option> <option value="SI">Slovenia</option> <option value="SB">Solomon Islands</option> <option value="SO">Somalia</option> <option value="ZA">South Africa</option> <option value="SS">South Sudan</option> <option value="ES">Spain</option> <option value="LK">Sri Lanka</option> <option value="SD">Sudan</option> <option value="SR">Suriname</option> <option value="SZ">Swaziland</option> <option value="SE">Sweden</option> <option value="CH">Switzerland</option> <option value="SY">Syria</option> <option value="TW">Taiwan</option> <option value="TJ">Tajikistan</option> <option value="TZ">Tanzania</option> <option value="TH">Thailand</option> <option value="TL">Timor-Leste</option> <option value="TG">Togo</option> <option value="TK">Tokelau</option> <option value="TO">Tonga</option> <option value="TT">Trinidad and Tobago</option> <option value="TN">Tunisia</option> <option value="TR">Turkey</option> <option value="TM">Turkmenistan</option> <option value="TV">Tuvalu</option> <option value="UG">Uganda</option> <option value="UA">Ukraine</option> <option value="AE">United Arab Emirates</option> <option value="GB">United Kingdom</option> <option value="US">United States</option> <option value="UY">Uruguay</option> <option value="UZ">Uzbekistan</option> <option value="VU">Vanuatu</option> <option value="VE">Venezuela</option> <option value="VN">Vietnam</option> <option value="WF">Wallis and Futuna</option> <option value="EH">Western Sahara</option> <option value="YE">Yemen</option> <option value="ZM">Zambia</option> <option value="ZW">Zimbabwe</option>
                             </select>
                         </div>
                            
@@ -146,14 +90,14 @@
                 {{-- Form Questions --}}    
                 <div class="w-auto {{$currentStep == 4 ? 'block' : 'hidden'}} flex justify-center content-center" id="step-4">
                     <div class="flex px-2 content-center justify-center text-xs w-44 h-40">
-                        <div class="flex flex-col py-2 content-center justify-center ">
+                        <div class="radio-button flex flex-col py-2 content-center justify-center ">
                             <p class="my-2 text-center">What is your main priorities right now ?</p>
                             <input type="radio" id="invited" value="invited" name="priority" wire:model="priority" class="hidden" onclick="changeColor();">
-                            <label for="invited" id="invited-label" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
+                            <label for="invited" id="invited-label" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
                                     Invited by Someone
                             </label>                            
                             <input type="radio" value="needhelp" id="looking" name="priority" wire:model="priority" class="hidden ">
-                            <label for="looking" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
+                            <label for="looking" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
                                     I Need Help Myself
                             </label> 
                             
@@ -176,31 +120,30 @@
                         </div>
                     </div>   
                     <div class="flex px-2 gap-2 mb-2 content-center justify-center">
-                        <div class="flex flex-col py-2 content-center justify-center">
-                            <p class="my-2 text-center">Tell us your age to help you better</p>
-                            <p>{{$age}}</p>
+                        <div class="radio-button flex flex-col py-2 content-center justify-center">
+                            <p class="my-2 text-center">Tell us your age to let us help you better</p>
 
                             <div x-data="{showText : false}" class="flex flex-col content-center justify-center">
                                 <input type="radio" name="age" wire:model="age" value="14-17" class="hidden" id="age14to17">
-                                <label @click =" showText = ! showText" for="age14to17" id="ageLabel" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
+                                <label @click =" showText = ! showText" for="age14to17" id="ageLabel" class="h-8 sm:h-10 border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
                                         14-17
                                 </label>
                                 <p x-show="showText" class="text-xs text-center" id="adviceText">You need more advice, <a class="text-blue-500 underline" href="/relative-advice">click here</a>.</p>
                             </div>
                             <input type="radio" name="age" wire:model="age" value="18-25" class="hidden" id="age18to25">
-                            <label for="age18to25" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
+                            <label for="age18to25" class="h-8 sm:h-10 border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center cursor-pointer hover:bg-gray-200">
                                 18 - 25
                             </label>
                             <input type="radio" value="26-39" name="age" wire:model="age" class="hidden" id="age26to39">
-                            <label for="age26to39" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <label for="age26to39" class="h-8 sm:h-10 border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                 26 - 39
                             </label>
                             <input type="radio" value="40-64" name="age" wire:model="age" class="hidden" id="age40to64">
-                            <label for="age40to64" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <label for="age40to64" class="h-8 sm:h-10 border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                 40 - 64
                             </label>
                             <input type="radio" value="65+" name="age" wire:model="age" class="hidden" id="age65">
-                            <label for="age65" class="h-8 sm:h-10 border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
+                            <label for="age65" class="h-8 sm:h-10 border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200">
                                65+
                             </label>
                             
@@ -222,13 +165,13 @@
                             <div>
                                 <p class="my-2 text-center">Do you want to receive SMS when the person who invited you make changes in the MinPlan App? </p>
                             </div>
-                            <div class="flex px-2 content-center justify-evenly">
+                            <div class="radio-button flex px-2 content-center justify-evenly">
                                 <input type="radio" value="yes" name="confirmSMS" id="smsYes" wire:model="confirmSMS" class="hidden">
-                                <label for="smsYes" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200 select-none selected">
+                                <label for="smsYes" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200 select-none selected">
                                     Yes
                                 </label>
                                 <input type="radio" value="no" id="smsNo" name="confirmSMS" wire:model="confirmSMS" class="hidden">
-                                <label for="smsNo"class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200 select-none">
+                                <label for="smsNo"class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer hover:bg-gray-200 select-none">
                                     No
                                 </label>
                             </div>
@@ -258,17 +201,17 @@
                 <div class="w-auto {{$currentStep == 6 ? 'block' : 'hidden'}}" id="step-6b">
                 @if ($priority === 'needhelp')
                 <div class="flex px-2 gap-2 mb-2 content-center justify-center text-sm">
-                    <div class="flex flex-col px-2 content-center justify-center">
+                    <div class="radio-button flex flex-col px-2 content-center justify-center">
                         <div>
                             <p class="my-2 text-center">Do you want us to Provide you with a Safty Plan ? </p>
                         </div>
                         <div class="flex px-2 content-center justify-evenly">
                             <input type="radio" value="yes" id="planYes" name="confirmSaftyplan" wire:model="confirmSaftyplan" class="hidden">
-                            <label for="planYes" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
+                            <label for="planYes" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
                                 Yes
                             </label>
                             <input type="radio" value="no" id="planNo" name="confirmSaftyplan" wire:model="confirmSaftyplan" class="hidden">
-                            <label for="planNo" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
+                            <label for="planNo" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
                                 No
                             </label>
                         </div>
@@ -304,13 +247,13 @@
                     <div>
                         <p class="my-2 text-center">What about receiving E-mails too ?</p>
                     </div>
-                    <div class="flex px-2 content-center justify-evenly">
+                    <div class="radio-button flex px-2 content-center justify-evenly">
                         <input type="radio" value="yes" name="confirmEmail" id="emailYes" wire:model="confirmEmail" class="hidden">
-                        <label for="emailYes" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
+                        <label for="emailYes" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
                             Yes
                         </label>
                         <input type="radio" value="no" name="confirmEmail" id="emailNo" wire:model="confirmEmail" class="hidden">
-                        <label for="emailNo" class="border-[1px] border-gray-600 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
+                        <label for="emailNo" class="border-[1px] border-gray-300 py-2 px-2 my-1 rounded-full text-center  cursor-pointer">
                             No
                         </label>
                     </div>
@@ -359,27 +302,46 @@
                     @endif
                 </div>
             </div>
-            <div class="w-auto {{$currentStep < 4 ? 'block' : 'hidden'}} flex justify-center text-sm my-2">
-                <div class="flex w-auto content-center justify-center mx-2 my-4">
-                    <div class="flex mx-2 justify-center items-center sm:mx-8">
+            <div class="w-auto {{$currentStep < 8 ? 'block' : 'hidden'}} mt-3 flex justify-center items-center">
+                <div class="w-44 flex justify-center items-center">
+                    <div class="flex justify-center items-center">
                         
                             @if ($currentStep == 1)
-
-                            <div class="mr-6 w-3 h-3 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mr-6 w-3 h-3 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
                             @endif
 
                             @if ($currentStep == 2)
-                            <div class="mr-6 w-3 h-3 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mr-6 w-3 h-3 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
                             @endif
 
                             @if ($currentStep == 3)
-                            <div class="mr-6 w-3 h-3 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mr-6 w-3 h-3 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
+                            @endif
+                            @if ($currentStep == 4)
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
+                            @else
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
+                            @endif
+                            @if ($currentStep == 5)
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
+                            @else
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
+                            @endif
+                            @if ($currentStep == 6)
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
+                            @else
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
+                            @endif
+                            @if ($currentStep == 7)
+                            <div class="mx-2 w-2 h-2 bg-mainColor rounded-full mt-1"></div>
+                            @else
+                            <div class="mx-2 w-2 h-2 box-bg rounded-full mt-1"></div>
                             @endif
                         
                     </div>

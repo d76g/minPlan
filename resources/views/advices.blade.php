@@ -1,11 +1,8 @@
 <x-app-layouts>
-    <div class="w-auto container h-screen w-full flex flex-col justify-center">
-    <div class="w-auto flex justify-start m-6 text-gray-300">
-        <a href="/" class="flex items-center justify-start"><i class="fa-solid fa-angle-left fa-2x"></i>
-            <p class="text-xs px-1">Home</p>
-        </a>
-        
-    </div>
+    <div class="relative container h-screen w-full flex flex-col justify-center">
+      <div class="absolute w-full flex justify-between">  
+        @yield('navmenu')
+      </div>
     <div class="w-auto container h-screen flex justify-center">
         <div class="w-auto flex flex-col h-auto justify-center">
           <div class="w-80 sm:w-96 h-12">

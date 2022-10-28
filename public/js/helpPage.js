@@ -1,7 +1,7 @@
 // For Rope Button
 let rope = document.querySelector('#rope')
 if(sessionStorage.getItem('ropebgColor') == null){
-    rope.classList = rope.classList;
+    rope.classList;
 }
 else {
     rope.classList = sessionStorage.getItem('ropebgColor')
@@ -9,13 +9,13 @@ else {
 
 rope.addEventListener('click', ()=>{
      rope.classList.toggle('bg-gray-200')
-     rope.classList.toggle('bg-gray-300')
+     rope.classList.toggle('bg-selected')
     sessionStorage.setItem('ropebgColor', rope.classList)
 })
 // Med Button
 let med = document.querySelector('#med')
 if(sessionStorage.getItem('medbgColor') == null){
-    med.classList = med.classList;
+    med.classList;
 }
 else {
     med.classList = sessionStorage.getItem('medbgColor')
@@ -23,20 +23,20 @@ else {
 
 med.addEventListener('click', ()=>{
     med.classList.toggle('bg-gray-200')
-    med.classList.toggle('bg-gray-300')
+    med.classList.toggle('bg-selected')
     sessionStorage.setItem('medbgColor', med.classList)
 })
 // sharp Button
 let sharp = document.querySelector('#sharp')
 if(sessionStorage.getItem('sharpbgColor') == null){
-    sharp.classList = sharp.classList;
+    sharp.classList;
 }
 else {
     sharp.classList = sessionStorage.getItem('sharpbgColor')
 }
 sharp.addEventListener('click', ()=>{
     sharp.classList.toggle('bg-gray-200')
-    sharp.classList.toggle('bg-gray-300')
+    sharp.classList.toggle('bg-selected')
     sessionStorage.setItem('sharpbgColor', sharp.classList)
 })
 // Alcohol Button
@@ -49,7 +49,7 @@ else {
 }
 alcohol.addEventListener('click', ()=>{
     alcohol.classList.toggle('bg-gray-200')
-    alcohol.classList.toggle('bg-gray-300')
+    alcohol.classList.toggle('bg-selected')
     sessionStorage.setItem('alcoholbgColor', alcohol.classList)
 })
 // Razor Button
@@ -62,7 +62,7 @@ else {
 }
 razor.addEventListener('click', ()=>{
     razor.classList.toggle('bg-gray-200')
-    razor.classList.toggle('bg-gray-300')
+    razor.classList.toggle('bg-selected')
     sessionStorage.setItem('razorbgColor', razor.classList)
 })
 // Firearms button
@@ -75,6 +75,6 @@ else {
 }
 firearms.addEventListener('click', ()=>{
     firearms.classList.toggle('bg-gray-200')
-    firearms.classList.toggle('bg-gray-300')
+    firearms.classList.toggle('bg-selected')
     sessionStorage.setItem('firearmsbgColor', firearms.classList)
 })
