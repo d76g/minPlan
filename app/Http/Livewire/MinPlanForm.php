@@ -16,7 +16,7 @@ class MinPlanForm extends Component
     public string $confirmEmail = '';
     public string $phoneNumber = '';
     public string $confirmSaftyplan = '';
-    public $currentStep = 5;
+    public $currentStep = 3;
     public string $country = '';
     public string $language = '';
 
