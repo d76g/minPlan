@@ -1,49 +1,32 @@
 @section('title','Help Page')
 <x-app-layouts>
-    <div class="w-auto flex items-center justify-start m-6 text-gray-300">
-        <a href="/" class="flex items-center justify-start"><i class="fa-solid fa-angle-left fa-2x"></i>
-            <p class="text-xs px-1">Home</p>
-        </a>
-        
-    </div>
-    <div class="container flex flex-col w-auto h-auto items-center justify-center text-sm" style="color:rgb(236, 156, 50);">
-        <div class="w-screen flex justify-center mb-8">
-            <span class="material-icons-outlined" style="font-size: 72px">health_and_safety</span>
+    {{-- Main Container --}}
+    <div class="container w-auto h-5/6 emergencyColor flex items-center flex-col text-base">
+        {{-- Content Container --}}
+        <div class="w-screen flex justify-center mb-12">
+            <span class="material-icons-outlined text-8xl">health_and_safety</span>
         </div>
-        <div class="flex flex-col items-center justify-center text-sm">
-            <p class="py-2 text-jusify">{{GoogleTranslate::trans('Think about the environment.',session()->get('locale'))}}</p>
-            <p class="py-2 text-center w-[250px]">{{GoogleTranslate::trans('The goal is to reduce access to resources or items which can be used to cause harm.',session()->get('locale'))}}</p>
-            <p class="py-2 text-jusify">Press the items you've already secured:</p>
+        <div class="flex flex-col items-center justify-center text-base w-64 h-44 text-justify">
+            <p class="py-2">{{GoogleTranslate::trans('Think about your environment.',session()->get('locale'))}}</p>
+            <p class="py-4">{{GoogleTranslate::trans('The goal here is to reduce access to resources or items which can be used to cause harm.',session()->get('locale'))}}</p>
+            <p class="py-2 text-center" style="color: rgba(66, 192, 183, 1);">Press the items you've already secured:</p>
         </div>
-        <div class="flex items-center justify-center text-gray-900">
-            <div class="flex flex-col mx-6 my-2">
-                <button id="rope" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center ">String ropes</button>
-                <button id="med" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center">Medication</button>
-                <button id="sharp" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center ">Sharp objects</button>
-            </div>
-            <div class="flex flex-col mx-6 my-2">
-                <button id="alcohol" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center ">Alcohol</button>
-                <button id="razor" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center">Razors</button>
-                <button id="firearms" class="px-4 py-2 rounded-full bg-gray-200 my-1 flex jusify-center justify-items-center ">Firearms</button>
-            </div>
+        <div class="grid grid-cols-2 grid-rows-3 gap-x-1 items-center justify-center text-sm my-6" style="color: #476F6C">
+                <button id="rope" class="px-4 py-2 rounded-full bg-gray-200 my-1 ">String ropes</button>
+                <button id="alcohol" class="px-4 py-2 rounded-full bg-gray-200 my-1 ">Alcohol</button>
+                <button id="med" class="px-4 py-2 rounded-full bg-gray-200 my-1">Medication</button>
+                <button id="razor" class="px-4 py-2 rounded-full bg-gray-200 my-1">Razors</button>
+                <button id="sharp" class="px-4 py-2 rounded-full bg-gray-200 my-1 ">Sharp objects</button>
+                <button id="firearms" class="px-4 py-2 rounded-full bg-gray-200 my-1 ">Firearms</button>
         </div>
         <div class="flex flex-col items-center justify-center">
-            <p class="py-2 text-center w-60">{{GoogleTranslate::trans('Go Away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
+            <p class="py-2 text-center w-64 h-14">{{GoogleTranslate::trans('Go away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
         </div>
     </div>
-    {{-- <div class="relative sm:hidden">
-        <div class="absolute inset-x-0 top-8 w-screen h-auto sm:w-[500px] flex justify-around items-end ">
-            <div class="w-[50px] h-[50px]  rounded-full flex justify-center items-center">
-                <a href="tel:+601128563327"><img src="{{asset('images/HelpLines-icon-04.png')}}" alt="helpline"></a>
-            </div>
-            <div class="w-[70px] h-[70px] bg-white drop-shadow-lg rounded-full  flex justify-center items-center">
-                <a href="tel:+601128563327"><button><i class="fas fa-phone-alt fa-3x text-red-500"></i></button></a>
-            </div>
-            <div class="w-[50px] h-[50px]  rounded-full flex justify-center items-center">
-                <a href="tel:+601128563327"><img src="{{asset('images/car-emergency-smc.png')}}" alt="emergency car"></a>
-            </div>
-        </div>
-    </div> --}}
+    <div>
+        
+    </div>
+    
 
     <script src="{{asset('js/helpPage.js')}}"></script>
 </x-app-layouts>

@@ -4,6 +4,7 @@ use App\Models\minPlanFormModel;
 use App\Http\Livewire\MinPlanForm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LangController;
+use App\Http\Livewire\CareTips;
 use App\Http\Livewire\LangTrasns;
 
 /*
@@ -20,13 +21,12 @@ use App\Http\Livewire\LangTrasns;
 Route::get('/', function () {
     return redirect('/form');
 });
-Route::get('/relative-advice', LangTrasns::class);
-
-Route::get('/relative-advice/advice', function () {
-    return view('advices');
+Route::get('/relative-advice', function () {
+    return view('relativeAdvice');
 });
 
 Route::get('/form', MinPlanForm::class)->name('form')->middleware('lang');
+Route::get('/careTips', CareTips::class);
 
 Route::get('/help', function () {
     return view('helpPage');
@@ -35,6 +35,11 @@ Route::get('/help', function () {
 Route::get('/downloadApp', function () {
     return view('downloadApp');
 })->name('downloadApp');
+
 Route::get('/underagehelp', function () {
     return view('underageHelp');
 })->name('underageHelp');
+
+Route::get('/advices', function () {
+    return view('advices');
+})->name('advices');
