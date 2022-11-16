@@ -1,7 +1,7 @@
 <div class="flex justify-between w-full">
     <div class="flex items-center text-gray-300 bg-white mt-4 ml-3 rounded-md py-2 px-3 hover:text-black transition ease-in-out hover:-translate-x-1 cursor-pointer">
         <a onclick="previousURL();" class="flex items-center justify-start"><i class="fa-solid fa-angle-left fa-xl"></i>
-            <p class="text-xs px-1">{{GoogleTranslate::trans('Back', session()->get('locale'))}}</p>
+            <p class="text-xs px-1">{{GoogleTranslate::trans('Back', session()->get('locale') ?? app()->getLocale())}}</p>
         </a>
     </div>
     <div class="flex justify-end mr-3">

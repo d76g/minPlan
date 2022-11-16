@@ -19,10 +19,6 @@ class MinPlanForm extends Component
     public $currentStep = 1;
     public string $country = '';
 
-    public function render()
-    {
-        return view('livewire.min-plan-form');
-    }
     protected $rules = [
         'age' => ['required_if:priority,invited,lookingAround'],
         'email' => ['required_if:confirmEmail,yes', 'required_if:confirmSaftyplan,yes', 'email'],
@@ -178,13 +174,20 @@ class MinPlanForm extends Component
         $this->confirmEmail = '';
         $this->confirmSaftyplan = '';
         $this->currentStep = 1;
+        $this->country = '';
     }
+
     public string $language = '';
+
     public function translate()
     {
 
         App::setLocale($this->language);
         session()->put('locale', $this->language);
         return back();
+    }
+    public function render()
+    {
+        return view('livewire.min-plan-form');
     }
 }

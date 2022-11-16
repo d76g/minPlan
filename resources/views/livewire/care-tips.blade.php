@@ -9,7 +9,7 @@
             {{-- Steps Container --}}
             <div class="relative flex justify-center items-center flex-col h-[80vh] w-auto">
             {{-- Step 1 --}}
-            <di leading-5v class="static flex flex-col items-center {{$currentStep == 1 ? 'block' : 'hidden'}}">
+            <di class="static flex flex-col items-center {{$currentStep == 1 ? 'block' : 'hidden'}}">
                 
                 <div class="flex flex-col items-center justify-center text-base w-64 h-44 text-justify">
                     <p class="py-2 leading-5">{{GoogleTranslate::trans('Think about your environment.',session()->get('locale'))}}</p>
@@ -17,12 +17,12 @@
                     <p class="py-2 leading-5 text-center w-60" style="color: rgba(66, 192, 183, 1);">{{GoogleTranslate::trans("Press the items you've already secured:",session()->get('locale'))}}</p>
                 </div>
                 <div class="grid grid-cols-2 grid-rows-3 gap-x-1 items-center justify-center text-sm my-6" style="color: #476F6C">
-                        <button id="rope" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('String ropes',session()->get('locale'))}}</button>
-                        <button id="alcohol" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Alcohol',session()->get('locale'))}}</button>
-                        <button id="med" class="px-4 py-2 rounded-full bg-notSelected my-1">{{GoogleTranslate::trans('Medication',session()->get('locale'))}}</button>
-                        <button id="razor" class="px-4 py-2 rounded-full bg-notSelected my-1">{{GoogleTranslate::trans('Razors',session()->get('locale'))}}</button>
-                        <button id="sharp" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Sharp objects',session()->get('locale'))}}</button>
-                        <button id="firearms" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Firearms',session()->get('locale'))}}</button>
+                        <a id="rope" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('String ropes',session()->get('locale'))}}</a>
+                        <a id="alcohol" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Alcohol',session()->get('locale'))}}</a>
+                        <a id="med" class="px-4 py-2 rounded-full bg-notSelected my-1">{{GoogleTranslate::trans('Medication',session()->get('locale'))}}</a>
+                        <a id="razor" class="px-4 py-2 rounded-full bg-notSelected my-1">{{GoogleTranslate::trans('Razors',session()->get('locale'))}}</a>
+                        <a id="sharp" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Sharp objects',session()->get('locale'))}}</a>
+                        <a id="firearms" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Firearms',session()->get('locale'))}}</a>
                 </div>
                 <div class="flex flex-col items-center justify-center">
                     <p class="py-2 text-center w-64 h-14">{{GoogleTranslate::trans('Go away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
@@ -55,7 +55,7 @@
                 </div>
             </div>
             {{-- End of Step 3 --}}
-            {{-- Step 3 --}}
+            {{-- Step 4 --}}
             <div class="relative flex flex-col items-center justify-evenly {{$currentStep == 4 ? 'block' : 'hidden'}}">
                 <div class="grid grid-rows-2 gap-4 w-60 text-center">
                     <div>
@@ -65,19 +65,27 @@
                         <p>{{GoogleTranslate::trans('You can call somebody in the the network. Or ask for  professional assistance.',session()->get('locale'))}}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-x-4 h-44 w-60 justify-center items-center">
-                    
+                <div class="grid grid-cols-3 gap-x-6 h-44 w-60 justify-center items-center">
+                    <a href="">
+                        <img src="{{URL::asset('/images/Helpline.svg')}}" alt="Helpline">
+                    </a>
+                    <a href="">
+                        <img src="{{URL::asset('/images/Emergency Calls.svg')}}" alt="Emergency Calls">
+                    </a>
+                    <a href="">
+                        <img src="{{URL::asset('/images/Ambulance.svg')}}" alt="Ambulance">
+                    </a>
                         
                 </div>
             </div>
-            {{-- End of Step 3 --}}
+            {{-- End of Step 4 --}}
             </div>
             {{-- End of Steps Container --}}
         </div>
         {{-- Stepper --}}
         <div class="w-auto h-14 flex justify-center items-center absolute inset-x-0 bottom-0 {{$currentStep <= 4 ? 'block' : 'hidden'}}">
             <div>
-                <button type="button" class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl"></i></button>
+                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl"></i></button>
             </div>
             <div class="w-44 flex justify-center items-center">
                 <div class="flex justify-center items-center">
