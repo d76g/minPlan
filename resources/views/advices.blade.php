@@ -1,8 +1,7 @@
+@section('title','Advices')
+
 <x-app-layouts>
     <div class="relative container h-screen w-full flex flex-col justify-center">
-      <div class="absolute w-full flex justify-between">  
-        @yield('navmenu')
-      </div>
     <div class="w-auto container h-screen flex justify-center">
         <div class="w-auto flex flex-col h-auto justify-center">
           <div class="w-80 sm:w-96 h-12">

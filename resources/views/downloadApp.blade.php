@@ -1,18 +1,18 @@
 @section('title','Download App')
     
 <x-app-layouts>
-    <div class="relative h-screen bg-mainColor text-white flex justify-center items-center w-full">
+    <div class="relative h-screen bg-mainColor text-white flex justify-center items-center w-full z-10">
         <div class="absolute bottom-16 left-26 sm:top-40 sm:left-36 animate__animated animate__fadeIn animate__delay-1s">
             <img src="{{asset('/images/blob.svg')}}" alt="blob" class="w-44 sm:w-64 h-auto">
         </div>
-        <div class="absolute top-4 left-0 sm:top-60 sm:right-28 animate__animated animate__fadeIn animate__delay-1s">
+        <div class="absolute top-4 left-26 sm:top-60 sm:right-28 animate__animated animate__fadeIn animate__delay-1s">
             <img src="{{asset('/images/blob.svg')}}" alt="blob" class="w-64 sm:w-80 h-auto">
         </div>
         <div class="static bg-teal-400 h-92 w-80 sm:h-[38rem] sm:w-[63rem] rounded-lg drop-shadow-lg sm:grid sm:grid-cols-2 gap-4 overflow-hidden animate__animated animate__backInLeft">
             <div class="flex justify-center items-center flex-col py-4">
                 <h1 class="text-2xl sm:text-6xl font-bold">{{GoogleTranslate::trans('Download',session()->get('locale'))}}</h1>
                 <h1 class="text-lg sm:text-2xl py-1">{{GoogleTranslate::trans('Our App',session()->get('locale'))}}</h1>
-                <h1 class="sm:py-4 text-sm">" {{GoogleTranslate::trans('For All affected by mental crises',session()->get('locale'))}} "</h1>
+                <h1 class="sm:py-4 text-sm">{{GoogleTranslate::trans('For All affected by mental crises',session()->get('locale'))}}</h1>
                 
             </div>
             <div class="bg-white flex flex-col justify-center items-center">

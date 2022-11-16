@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('country');
             $table->string('priority');
             $table->string('age')->nullable();
-            $table->boolean('receive_sms')->nullable();
+            $table->string('receive_sms')->nullable();
             $table->string('phone_number')->nullable();
-            $table->boolean('receive_email')->nullable();
-            $table->boolean('needs_safty_plan')->nullable();
+            $table->string('receive_email')->nullable();
+            $table->string('needs_safty_plan')->nullable();
             $table->string('email')->nullable();
             $table->timestamps();
         });

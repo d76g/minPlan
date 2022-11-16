@@ -4,17 +4,17 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Request;
 
-class LangTrasns extends Component
+class LangTranslate extends Component
 {
-    public string $language = '';
-
     public function render()
     {
-        return view('livewire.lang-trasns');
+        return view('livewire.lang-translate');
     }
-
-    public function change()
+    public string $language = '';
+    public function translate()
     {
         App::setLocale($this->language);
         session()->put('locale', $this->language);

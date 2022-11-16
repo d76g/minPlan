@@ -16,14 +16,9 @@ class MinPlanForm extends Component
     public string $confirmEmail = '';
     public string $phoneNumber = '';
     public string $confirmSaftyplan = '';
-    public $currentStep = 3;
+    public $currentStep = 1;
     public string $country = '';
-    public string $language = '';
 
-    public function render()
-    {
-        return view('livewire.min-plan-form');
-    }
     protected $rules = [
         'age' => ['required_if:priority,invited,lookingAround'],
         'email' => ['required_if:confirmEmail,yes', 'required_if:confirmSaftyplan,yes', 'email'],
@@ -178,12 +173,21 @@ class MinPlanForm extends Component
         $this->confirmSMS = '';
         $this->confirmEmail = '';
         $this->confirmSaftyplan = '';
-        $this->currentStep = 4;
+        $this->currentStep = 1;
+        $this->country = '';
     }
-    public function change()
+
+    public string $language = '';
+
+    public function translate()
     {
+
         App::setLocale($this->language);
         session()->put('locale', $this->language);
-        return $this->currentStep;
+        return back();
+    }
+    public function render()
+    {
+        return view('livewire.min-plan-form');
     }
 }
