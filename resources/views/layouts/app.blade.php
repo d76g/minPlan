@@ -35,13 +35,6 @@
     </head>
     <body class="antialiased">
         <header>
-            @php
-                if(Session()->has('locale','en')){
-                    Session()->put('locale',Session()->get('locale'));
-                }else {
-                    Session()->put('locale','en');
-                }
-            @endphp
             {{-- Navbar and Dropdowns --}}
             <div class="absolute z-30 w-full h-12 flex justify-between">
                @livewire('lang-translate')
