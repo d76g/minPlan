@@ -35,10 +35,18 @@
     </head>
     <body class="antialiased">
         <header>
+            @php
+                if(Session()->exists('locale')){
+                    Session()->put('locale',Session()->get('locale'));
+                    echo 'Locale exists';
+                }else {
+                    Session()->put('locale','en');
+                    echo 'Locale Not Set';
+                }
+            @endphp
             {{-- Navbar and Dropdowns --}}
             <div class="absolute z-30 w-full h-12 flex justify-between">
                @livewire('lang-translate')
-               
             </div>
         </header>
         {{-- Main Content Section --}}
