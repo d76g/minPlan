@@ -34,11 +34,6 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-       @php
-           if(Session()->get('locale','')){
-                Session()->put('locale','en');
-           }
-       @endphp
         <header>
             {{-- Navbar and Dropdowns --}}
             <div class="absolute z-30 w-full h-12 flex justify-between">
