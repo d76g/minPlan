@@ -15,7 +15,7 @@
     <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         
     {{-- Logo --}}
-    <div class="sm:absolute sm:inset-x[119px] sm:inset-y-[84px] w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
+    <div class="relative sm:absolute sm:inset-x[119px] sm:inset-y-[84px] w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
             <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
     </div>
         
@@ -86,7 +86,7 @@
             {{-- End of Steps --}}
             </div>
             {{-- Buttons --}}
-            <div class="w-auto h-14 flex justify-center items-center absolute inset-x-0 bottom-12 sm:bottom-0 mainColor mb-6 sm:mb-4">
+            <div class="w-auto h-14 flex justify-center items-center  mainColor mb-6 sm:mb-4">
                 {{-- Back --}}
                 <div>
                     <button type="button" class="{{$currentStep > 1  ? 'block':'hidden'}}" wire:click="goBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
@@ -95,26 +95,26 @@
                     <div class="flex justify-center items-center">
                         
                             @if ($currentStep == 1)
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
                             @endif
 
                             @if ($currentStep == 2)
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
                             @endif
 
                             @if ($currentStep == 3)
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
                             @endif
                             @if ($currentStep == 4)
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 bg-mainColor rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
                             @else
-                            <div class="mx-2 w-3 h-3 sm:w-4 sm:h-4 box-bg rounded-full mt-1"></div>
+                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
                             @endif
                         
                     </div>
