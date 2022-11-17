@@ -36,12 +36,10 @@
     <body class="antialiased">
         <header>
             @php
-                if(Session()->exists('locale')){
+                if(Session()->has('locale','en')){
                     Session()->put('locale',Session()->get('locale'));
-                    echo 'Locale exists';
                 }else {
                     Session()->put('locale','en');
-                    echo 'Locale Not Set';
                 }
             @endphp
             {{-- Navbar and Dropdowns --}}
