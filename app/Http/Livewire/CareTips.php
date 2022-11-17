@@ -7,6 +7,7 @@ use Livewire\Component;
 class CareTips extends Component
 {
     public $currentStep = 1;
+    protected $listeners = ['translate'];
 
     public function render()
     {
@@ -24,5 +25,11 @@ class CareTips extends Component
         } else {
             $this->currentStep--;
         }
+    }
+    public string $language = '';
+    public function translate()
+    {
+        Session()->get('locale');
+        return back();
     }
 }

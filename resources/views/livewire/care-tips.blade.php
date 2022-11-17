@@ -1,6 +1,6 @@
 @section('title','Help Care')
     {{-- Main Container --}}
-    <div class="container relative w-auto h-[93vh] text-base flex flex-col emergencyColor" wire:poll.750ms>
+    <div class="container relative w-auto h-[93vh] text-base flex flex-col emergencyColor">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-auto h-full">
             <div class="relative flex justify-center h-16 my-4">
