@@ -1,6 +1,16 @@
 @section('title','Relative Advices')
 <x-app-layouts>
+    @php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
 
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+
+    @endphp
 
 <div class="relative h-auto sm:h-screen flex flex-col bg-gray-50 w-auto sm:w-screen">
     <div class="static h-[250px] sm:h-1/2 w-full sm:w-auto sm:grid sm:grid-cols-3 flex flex-col justify-center items-center box-bg">

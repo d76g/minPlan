@@ -1,4 +1,15 @@
 @section('title','Guidance Tips')
+    @php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
+
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+
+    @endphp
     {{-- Main Container --}}
     <div class="container relative w-auto h-[93vh] text-base flex flex-col ">
         {{-- Content Container --}}

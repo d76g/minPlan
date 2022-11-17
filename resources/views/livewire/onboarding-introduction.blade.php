@@ -1,8 +1,19 @@
 @section('title','Onboarding')
+    @php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
+
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+
+    @endphp
 <div class="flex flex-col w-full h-screen sm:text-lg overflow-hidden sm:text-md">
     
     <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
-    
+        
     {{-- Logo --}}
     <div class="absolute inset-x[119px] inset-y-[84px] w-[190px] md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
             <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">

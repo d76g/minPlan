@@ -1,4 +1,15 @@
 @section('title','Onboarding Form')
+@php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
+
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+
+@endphp
 <div class="flex flex-col w-full h-screen sm:text-lg overflow-hidden sm:text-md">
     
     {{-- Logo --}}
