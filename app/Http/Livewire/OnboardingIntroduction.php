@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
 
@@ -10,6 +11,8 @@ class OnboardingIntroduction extends Component
     public string $age = '';
     public string $country = '';
     public $currentStep = 1;
+
+    protected $listeners = ['translate'];
 
     protected $rules = [
         'age' => ['required'],
@@ -73,9 +76,7 @@ class OnboardingIntroduction extends Component
     public string $language = '';
     public function translate()
     {
-
-        App::setLocale($this->language);
-        session()->put('locale', $this->language);
+        Session()->get('locale');
         return back();
     }
     public function render()

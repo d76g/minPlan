@@ -14,10 +14,12 @@ class LangTranslate extends Component
         return view('livewire.lang-translate');
     }
     public string $language = '';
+
     public function translate()
     {
         App::setLocale($this->language);
         session()->put('locale', $this->language);
+        $this->emit('translate');
         return back();
     }
 }

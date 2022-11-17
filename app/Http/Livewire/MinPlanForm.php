@@ -18,6 +18,7 @@ class MinPlanForm extends Component
     public string $confirmSaftyplan = '';
     public $currentStep = 1;
     public string $country = '';
+    protected $listeners = ['translate'];
 
     protected $rules = [
         'age' => ['required_if:priority,invited,lookingAround'],
@@ -66,9 +67,6 @@ class MinPlanForm extends Component
     {
         $this->currentStep = 3;
     }
-    protected $listeners = [
-        'getCountry'
-    ];
     public function getCountry()
     {
 
@@ -181,9 +179,7 @@ class MinPlanForm extends Component
 
     public function translate()
     {
-
-        App::setLocale($this->language);
-        session()->put('locale', $this->language);
+        Session()->get('locale');
         return back();
     }
     public function render()
