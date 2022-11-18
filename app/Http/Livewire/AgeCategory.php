@@ -9,6 +9,7 @@ class AgeCategory extends Component
 {
     public string $age = '';
     public $currentStep = 1;
+    protected $listeners = ['translate'];
 
     protected $rules = [
         'age' => ['required'],
@@ -48,9 +49,7 @@ class AgeCategory extends Component
     public string $language = '';
     public function translate()
     {
-
-        App::setLocale($this->language);
-        session()->put('locale', $this->language);
+        Session()->get('locale');
         return back();
     }
     public function render()

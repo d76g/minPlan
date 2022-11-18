@@ -14,8 +14,8 @@
     <div class="container relative w-auto h-[93vh] text-base flex flex-col emergencyColor">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-auto h-full">
-            <div class="relative flex justify-center h-16 my-4">
-                <span class="absolute top-10 material-icons-outlined text-8xl">health_and_safety</span>
+            <div class="relative flex justify-center h-16 my-4 sm:py-8">
+                <span class="material-icons-outlined text-8xl">health_and_safety</span>
             </div>
             {{-- Steps Container --}}
             <div class="relative flex justify-center items-center flex-col h-[80vh] w-auto">
@@ -36,7 +36,7 @@
                         <a id="firearms" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Firearms',session()->get('locale'))}}</a>
                 </div>
                 <div class="flex flex-col items-center justify-center">
-                    <p class="py-2 text-center w-64 h-14">{{GoogleTranslate::trans('Go away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
+                    <p class="py-1 text-center w-64 h-14">{{GoogleTranslate::trans('Go away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
                 </div>
             </di>
             {{GoogleTranslate::trans('',session()->get('locale'))}}
@@ -94,9 +94,9 @@
             {{-- End of Steps Container --}}
         </div>
         {{-- Stepper --}}
-        <div class="w-auto h-14 flex justify-center items-center absolute inset-x-0 bottom-0 {{$currentStep <= 4 ? 'block' : 'hidden'}}">
+        <div class="w-auto h-14 flex justify-center items-center {{$currentStep <= 4 ? 'block' : 'hidden'}}">
             <div>
-                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl"></i></button>
+                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
             </div>
             <div class="w-44 flex justify-center items-center">
                 <div class="flex justify-center items-center">
@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div>
-                <button type="button" class="{{$currentStep <= 3 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2xl "></i></button>
+                <button type="button" class="{{$currentStep <= 3 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2x sm:fa-3x "></i></button>
             </div>
         </div>
     </div>
