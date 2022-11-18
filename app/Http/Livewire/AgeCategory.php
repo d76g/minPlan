@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\App;
 
 class AgeCategory extends Component
 {
-    public string $age = '18-25';
-    public $currentStep = 4;
+    public string $age = '';
+    public $currentStep = 1;
     protected $listeners = ['translate'];
 
     protected $rules = [
