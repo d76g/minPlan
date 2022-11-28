@@ -14,17 +14,17 @@
     <div class="container relative w-auto h-[93vh] text-sm sm:text-base flex flex-col ">
         <div>
         {{-- Content Container --}}
-        <div class="relative flex items-center flex-col w-auto h-[80vh] mainColor my-7">
+        <div class="relative flex items-center flex-col w-full h-[80vh] mainColor my-7">
             <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
-                <span class=" material-icons-outlined text-6xl sm:text-7xl material-icons-round">volunteer_activism</span>
+                <span class="material-icons-outlined text-6xl material-icons-round">volunteer_activism</span>
             </div>
             {{-- Steps Container --}}
-            <div class="relative flex justify-center items-center flex-col h-[70vh] sm:h-[80vh] w-auto">
+            <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-auto">
             {{-- Step 1 --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}} flex flex-col justify-center content-center text-xs sm:text-sm">  
                 <div class="flex px-2 gap-2 mb-2 content-center justify-center flex-col items-center">
                     <div class="radio-button flex flex-col py-2 justify-center items-center">
-                        <p class="my-2 text-center">Tell us your age to let us help you better</p>
+                        <p class="my-2 text-center w-44">{{GoogleTranslate::trans('Tell us your age to let us help you better',session()->get('locale'))}}</p>
                         <input type="radio" name="age" wire:model="age" value="14-17" class="hidden" id="age14to17">
                         <label for="age14to17" class="h-12 w-[219px] sm:h-12 border-[1px] border-gray-300  my-1 rounded-full cursor-pointer hover:bg-gray-200 text-center py-3.5">
                             14 - 17
@@ -47,7 +47,7 @@
                         </label>
                         
                         <div class="w-44 text-center">
-                            @error('age') <span class="error text-red-400 text-xs">{{ $message }}</span> @enderror
+                            @error('age') <span class="error text-red-400 text-xs">{{GoogleTranslate::trans($message,session()->get('locale'))}}</span> @enderror
                         </div>
                     </div>
                     
@@ -256,7 +256,7 @@
             <div>
                 <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl mainColor"></i></button>
             </div>
-            <div class="w-56 flex justify-center items-center">
+            <div class="w-56 flex justify-center items-center {{$currentStep <= 7 && $currentStep > 1 ? 'block' : 'hidden'}}">
                 <div class="flex justify-center items-center">
                     
                     @if ($currentStep == 1)
@@ -303,7 +303,7 @@
             </div>
             <div>
                 @if ($age == '14-17')
-                    <button type="button"  class="{{$currentStep <= 4 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2xl mainColor"></i></button>
+                    <button type="button"  class="{{$currentStep < 4 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2xl mainColor"></i></button>
                 @endif
                 @if ($age == '18-25')
                 <button type="button"  class="{{$currentStep < 6 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2xl mainColor"></i></button>
