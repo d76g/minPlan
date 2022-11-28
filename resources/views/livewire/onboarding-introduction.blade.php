@@ -15,9 +15,9 @@
     <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         
     {{-- Logo --}}
-    <div class="relative w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
-            <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
-    </div>
+        <div class="relative w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
+                <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
+        </div>
         
     {{-- Form --}}
     <div class="relative w-60 sm:w-72 mx-auto h-80 flex flex-col justify-center items-center">
