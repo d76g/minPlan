@@ -45,7 +45,3 @@ Route::get('/underagehelp', function () {
 Route::get('/advices', function () {
     return view('advices');
 })->name('advices');
-
-Route::get('/webdesign', function () {
-    return view('webSplites');
-});
