@@ -58,7 +58,7 @@
             {{-- Step 3 --}}
             <div class="relative flex flex-col items-center {{$currentStep == 2 ? 'block' : 'hidden'}} text-start">
                             
-                    <p class="mb-10 w-60 text-center">{{GoogleTranslate::trans("As a person in need, the best you can do is to seek help from somebody you trust.",session()->get('locale'))}}</p>
+                <p class="mb-10 w-60 text-center">{{GoogleTranslate::trans("As a person in need, the best you can do is to seek help from somebody you trust.",session()->get('locale'))}}</p>
                 <div class="grid grid-rows-4 w-60">
                     <p class="leading-loose underline underline-offset-4 text-center">
                         {{GoogleTranslate::trans('It can be:',session()->get('locale'))}}</p>
