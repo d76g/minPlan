@@ -1,4 +1,5 @@
 @section('title','Onboarding')
+    
     @php 
             $currentStep = session()->get('introPageCurrentStep') ?? 1;
     @endphp
