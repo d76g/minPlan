@@ -1,19 +1,5 @@
 @section('title','Help Care')
-
-
-
     {{-- Main Container --}}
-        @php
-            if(session()->missing('locale')){
-                session()->put('locale','en');
-            }
-
-            if(session()->get('locale',''))
-            {
-                session()->put('locale',session()->get('locale' ?? 'en'));
-            }
-
-        @endphp
         <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex flex-col emergencyColor">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-auto h-full">
