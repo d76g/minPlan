@@ -1,6 +1,14 @@
 @section('title','Onboarding')
-    
+
     @php 
+            if(session()->missing('locale')){
+                        session()->put('locale','en');
+                    }
+
+                    if(session()->get('locale',''))
+                    {
+                        session()->put('locale',session()->get('locale' ?? 'en'));
+            }
             $currentStep = session()->get('introPageCurrentStep') ?? 1;
     @endphp
 {{-- Main Container --}}
