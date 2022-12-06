@@ -21,6 +21,6 @@ class CountryList extends Component
     }
     public function render()
     {
-        return view('livewire.country-list');
+        return view('livewire.country-list')->layout('layouts.guest');
     }
 }

@@ -1,25 +1,14 @@
 @section('title','Guidance Tips')
-    @php
-            if(session()->missing('locale')){
-                session()->put('locale','en');
-            }
-
-            if(session()->get('locale',''))
-            {
-                session()->put('locale',session()->get('locale' ?? 'en'));
-            }
-
-    @endphp
     {{-- Main Container --}}
-    <div class="container relative w-auto h-[93vh] text-sm sm:text-base flex flex-col ">
-        <div>
+    <div class="w-full h-[93vh] text-sm sm:text-base flex flex-col overflow-hidden">
+        <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-full h-[80vh] mainColor my-7">
             <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
                 <img src="{{URL::asset('/images/outline_health_and_safety.svg')}}" alt="Guidance Icon">
             </div>
             {{-- Steps Container --}}
-            <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-auto">
+            <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">
             {{-- Step 1 --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}} flex flex-col justify-center content-center text-xs sm:text-sm">  
                 <div class="flex px-2 gap-2 mb-2 content-center justify-center flex-col items-center">

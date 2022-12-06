@@ -33,13 +33,23 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-        <div class="min-h-screen">
-            @guest   
+            @php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
+
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+            @endphp
+        <div class="min-h-screen min-w-full">
+            <!-- Page Heading -->
                 @livewire('lang-translate')
-            @endguest
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                @yield('localeSession')
             </main>
             @livewireScripts
         </div>

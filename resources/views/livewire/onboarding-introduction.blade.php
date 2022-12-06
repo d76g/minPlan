@@ -1,27 +1,19 @@
 @section('title','Onboarding')
-    @php
-            if(session()->missing('locale')){
-                session()->put('locale','en');
-            }
-
-            if(session()->get('locale',''))
-            {
-                session()->put('locale',session()->get('locale' ?? 'en'));
-            }
-
+    @php 
+            $currentStep = session()->get('introPageCurrentStep') ?? 1;
     @endphp
+{{-- Main Container --}}
 <div class="flex flex-col w-full h-screen text-base sm:text-base overflow-hidden">
-    
+    {{-- Content Container --}}
     <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
-        
-    {{-- Logo --}}
-        <div class="relative w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
-                <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
-        </div>
-        
     {{-- Form --}}
-    <div class="relative w-60 sm:w-72 mx-auto h-80 flex flex-col justify-center items-center">
-            {{-- Welcome Page --}}
+    <div class="relative flex items-center flex-col w-full h-[80vh] my-7">
+         {{-- Logo --}}
+         <div class="relative w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
+            <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
+        </div>  
+        <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">  
+        {{-- Welcome Page --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}}" id="step-1">
                 <div class="flex px-2 gap-2 mb-2 content-center justify-center">
                     <div class="flex flex-col py-2 content-center justify-center ">
@@ -50,9 +42,8 @@
                         <p class="my-2 text-center w-60">
                             {{GoogleTranslate::trans('To provide the best Information we need to know which country you are in:',session()->get('locale'))}}</p>
                         <div class="flex flex-col justify-center items-center pt-4">
-                            
                             <label for="country" class="pb-2">{{GoogleTranslate::trans('Choose your country',session()->get('locale'))}}</label>
-                            <select wire:model.prevent="country" id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer block focus:ring-blue-500 focus:border-blue-500" name="country">
+                            <select wire:model="country" id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer block focus:ring-blue-500 focus:border-blue-500" name="country">
                                 <option selected>{{GoogleTranslate::trans('Select Country',session()->get('locale'))}}</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Netherland">The Netherland</option>
@@ -91,7 +82,6 @@
                         <a href="/home/guidance"><img src="{{URL::asset('/images/outline_health_and_safety.svg')}}" alt="Guidance Icon"></a>
                         <p class="mb-2 text-center w-60 h-11">{{GoogleTranslate::trans('Press the guidance icon, if you need support',session()->get('locale'))}}</p>
                     </div>
-                           
                 </div>
             </div>
                 
@@ -99,9 +89,10 @@
             {{-- End Step 4 --}}
                   
             {{-- End of Steps --}}
+                </div>
             </div>
             {{-- Buttons --}}
-            <div class="w-auto h-14 flex justify-center items-center  mainColor mb-12 mt-3 sm:mb-4 sm:absolute inset-x-0 bottom-0">
+            <div class="static w-auto mt-4 sm:mt-0 flex justify-center items-center mainColor">
                 {{-- Back --}}
                 <div>
                     <button type="button" class="{{$currentStep > 1  ? 'block':'hidden'}}" wire:click="goBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
