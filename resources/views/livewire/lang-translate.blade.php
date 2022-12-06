@@ -1,13 +1,4 @@
-@php
-            if(session()->missing('locale')){
-                session()->put('locale','en');
-            }
 
-            if(session()->get('locale',''))
-            {
-                session()->put('locale',session()->get('locale' ?? 'en'));
-            }
-@endphp
 <div class="absolute z-30 w-full h-12 flex justify-between">
 <div class="flex justify-between w-full">
     <div class="flex items-center text-gray-300 bg-white mt-4 ml-3 rounded-md py-2 px-3 hover:text-black transition ease-in-out hover:-translate-x-1 cursor-pointer">

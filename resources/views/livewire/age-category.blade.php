@@ -1,6 +1,15 @@
 @section('title','Guidance Tips')
     {{-- Main Container --}}
-    
+    @php
+            if(session()->missing('locale')){
+                session()->put('locale','en');
+            }
+
+            if(session()->get('locale',''))
+            {
+                session()->put('locale',session()->get('locale' ?? 'en'));
+            }
+    @endphp
     <div class="w-full h-[93vh] text-sm sm:text-base flex flex-col overflow-hidden">
         <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         {{-- Content Container --}}
