@@ -1,4 +1,7 @@
 @section('title','Help Care')
+
+
+
     {{-- Main Container --}}
         @php
             if(session()->missing('locale')){
@@ -11,7 +14,7 @@
             }
 
         @endphp
-    <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex flex-col emergencyColor">
+        <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex flex-col emergencyColor">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-auto h-full">
             <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
@@ -132,4 +135,4 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/helpPage.js')}}"></script>
+<script src="{{asset('js/helpPage.js')}}"></script>

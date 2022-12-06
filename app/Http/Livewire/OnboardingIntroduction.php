@@ -2,20 +2,18 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
 use Illuminate\Support\Facades\App;
+use Illuminate\Contracts\Session\Session;
 
 class OnboardingIntroduction extends Component
 {
-    public string $age = '';
     public string $country = '';
     public $currentStep = 1;
 
     protected $listeners = ['translate'];
 
     protected $rules = [
-        'age' => ['required'],
         'country' => ['required']
     ];
     public function updated($propertyName)
@@ -23,8 +21,6 @@ class OnboardingIntroduction extends Component
         $this->validateOnly(
             $propertyName,
             [
-                'age' => ['required'],
-
                 'country' => ['required']
             ]
         );
@@ -34,10 +30,12 @@ class OnboardingIntroduction extends Component
     public function welcomePage()
     {
         $this->currentStep = 2;
+        session()->put('introPageCurrentStep', $this->currentStep);
     }
     public function infoPage()
     {
         $this->currentStep = 3;
+        session()->put('introPageCurrentStep', $this->currentStep);
     }
     public function getCountry()
     {
@@ -45,7 +43,9 @@ class OnboardingIntroduction extends Component
         $this->validate([
             'country' => ['required'],
         ]);
+        session(['country' => $this->country]);
         $this->currentStep = 4;
+        session()->put('introPageCurrentStep', $this->currentStep);
     }
 
 
@@ -60,19 +60,8 @@ class OnboardingIntroduction extends Component
         } else {
             $this->currentStep--;
         }
+        session()->put('introPageCurrentStep', $this->currentStep);
     }
-
-    public function nextStep()
-    {
-        $this->currentStep++;
-    }
-
-    public function clearForm()
-    {
-        $this->country = '';
-        $this->currentStep = 1;
-    }
-
     public string $language = '';
     public function translate()
     {
@@ -81,6 +70,6 @@ class OnboardingIntroduction extends Component
     }
     public function render()
     {
-        return view('livewire.onboarding-introduction');
+        return view('livewire.onboarding-introduction')->layout('layouts.guest');
     }
 }

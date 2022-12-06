@@ -8,10 +8,16 @@
             {
                 session()->put('locale',session()->get('locale' ?? 'en'));
             }
-
+            
     @endphp
     {{-- Main Container --}}
     <div class="container relative w-auto h-[93vh] text-sm sm:text-base flex flex-col ">
+        {{-- @php
+        if($currentStep == 1){
+            $currentStep = session()->get('currentStep');
+        }
+        echo $currentStep;
+        @endphp --}}
         <div>
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-full h-[80vh] mainColor my-7">

@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\minPlanFormModel;
+use App\Http\Livewire\CareTips;
+use App\Http\Livewire\AgeCategory;
 use App\Http\Livewire\MinPlanForm;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LangController;
-use App\Http\Livewire\AgeCategory;
-use App\Http\Livewire\CareTips;
-use App\Http\Livewire\LangTrasns;
 use App\Http\Livewire\OnboardingIntroduction;
+use App\Http\Livewire\ShowFormData;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +20,16 @@ use App\Http\Livewire\OnboardingIntroduction;
 
 Route::get('/', function () {
     return redirect('/home');
-});
+})->name('home');
+
+Route::get('/admin/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/admin/formdata', ShowFormData::class)->middleware(['auth', 'verified'])->name('formData');
+
+require __DIR__ . '/auth.php';
+
 Route::get('/home', OnboardingIntroduction::class)->name('home');
 Route::get('/home/guidance', AgeCategory::class)->name('Guidance');
 

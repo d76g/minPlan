@@ -9,9 +9,10 @@
                 session()->put('locale',session()->get('locale' ?? 'en'));
             }
 
+            $currentStep = session()->get('introPageCurrentStep');
     @endphp
+
 <div class="flex flex-col w-full h-screen text-base sm:text-base overflow-hidden">
-    
     <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         
     {{-- Logo --}}
@@ -50,9 +51,8 @@
                         <p class="my-2 text-center w-60">
                             {{GoogleTranslate::trans('To provide the best Information we need to know which country you are in:',session()->get('locale'))}}</p>
                         <div class="flex flex-col justify-center items-center pt-4">
-                            
                             <label for="country" class="pb-2">{{GoogleTranslate::trans('Choose your country',session()->get('locale'))}}</label>
-                            <select wire:model.prevent="country" id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer block focus:ring-blue-500 focus:border-blue-500" name="country">
+                            <select wire:model="country" id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer block focus:ring-blue-500 focus:border-blue-500" name="country">
                                 <option selected>{{GoogleTranslate::trans('Select Country',session()->get('locale'))}}</option>
                                 <option value="Afghanistan">Afghanistan</option>
                                 <option value="Netherland">The Netherland</option>
@@ -91,7 +91,6 @@
                         <a href="/home/guidance"><img src="{{URL::asset('/images/outline_health_and_safety.svg')}}" alt="Guidance Icon"></a>
                         <p class="mb-2 text-center w-60 h-11">{{GoogleTranslate::trans('Press the guidance icon, if you need support',session()->get('locale'))}}</p>
                     </div>
-                           
                 </div>
             </div>
                 

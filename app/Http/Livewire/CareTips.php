@@ -11,7 +11,7 @@ class CareTips extends Component
 
     public function render()
     {
-        return view('livewire.care-tips');
+        return view('livewire.care-tips')->layout('layouts.guest');
     }
 
     public function nextStep()

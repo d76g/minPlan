@@ -33,10 +33,9 @@
         @livewireStyles
     </head>
     <body class="antialiased">
-        <div class="min-h-screen">
-            @guest   
+        <div class="min-h-screen min-w-full">
+            <!-- Page Heading -->
                 @livewire('lang-translate')
-            @endguest
             <!-- Page Content -->
             <main>
                 {{ $slot }}

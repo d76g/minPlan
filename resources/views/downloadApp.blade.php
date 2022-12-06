@@ -1,6 +1,6 @@
 @section('title','Download App')
     
-<x-app-layouts>
+<x-guest-layout>
     @php
     if(session()->missing('locale')){
         session()->put('locale','en');
@@ -65,4 +65,4 @@
             </div>
         </div>
     </div>
-</x-app-layouts>
+</x-guest-layout>
