@@ -75,17 +75,27 @@
                         <p>{{GoogleTranslate::trans('You can call somebody in the the network. Or ask for  professional assistance.',session()->get('locale'))}}</p>
                     </div>
                 </div>
-                <div class="grid grid-cols-3 gap-x-6 h-44 w-60 justify-center items-center">
-                    <a href="">
+                <div class="sm:hidden grid grid-cols-2 gap-x-4 h-44 w-54 justify-center items-center">
+                    <a href="tel:+{{$emergency_data[1]->phone}}">
                         <img src="{{URL::asset('/images/Helpline.svg')}}" alt="Helpline">
                     </a>
-                    <a href="">
+                    <a href="tel:112">
                         <img src="{{URL::asset('/images/Emergency Calls.svg')}}" alt="Emergency Calls">
                     </a>
-                    <a href="">
-                        <img src="{{URL::asset('/images/Ambulance.svg')}}" alt="Ambulance">
-                    </a>
-                        
+                </div>
+                <div class="hidden sm:block w-72 mt-4">
+                    <div class="flex justify-center items-center flex-col text-center">
+                        <p class="my-1 ">{{GoogleTranslate::trans('Based on you the country choosen, you can call', session()->get('locale'))}}</p>
+                        @foreach ($emergency_data as $phonenumber)
+                            <p class="my-1  text-black bg-slate-200 py-1 px-2 rounded-lg">+{{$phonenumber->phone}}</p>
+                        @endforeach
+                        <p class="my-1 ">{{GoogleTranslate::trans('or Visit the following websites',session()->get('locale'))}}</p>
+                        <div class="flex flex-col text-start text-blue-500 text-sm">
+                            @foreach ($emergency_data as $data)
+                            <a class=" hover:underline hover:text-blue-600" href="{{$data->website}}" target="_blank">‣ {{$data->name}}</a>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
             {{-- End of Step 4 --}}
