@@ -2,16 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Emergencyroom;
+use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
 
 class CareTips extends Component
 {
-    public $currentStep = 1;
+    public $currentStep = 4;
     protected $listeners = ['translate'];
 
     public function render()
     {
-        return view('livewire.care-tips')->layout('layouts.guest');
+        return view('livewire.care-tips', [
+            'emergency_data' => Emergencyroom::select('phone', 'website', 'country', 'name')->where('country', session()->get('country'))->get()
+        ])->layout('layouts.guest');
     }
 
     public function nextStep()
