@@ -2,9 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
+use App\Models\Emergencyroom;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use Illuminate\Contracts\Session\Session;
 
 class AgeCategory extends Component
 {
@@ -55,10 +57,11 @@ class AgeCategory extends Component
     }
     public function render()
     {
-        return view('livewire.age-category')->layout('layouts.guest');
+        return view(
+            'livewire.age-category',
+            [
+                'emergency_data' => DB::table('emergencyrooms')->select('phone', 'website', 'name')->where('country', session()->get('country'))->get(),
+            ]
+        )->layout('layouts.guest');
     }
 }
-//* To get the country
-// , [
-//     $this->country = session()->get('country'),
-// ]

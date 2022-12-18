@@ -24,20 +24,27 @@
         <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">  
         {{-- Welcome Page --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}}" id="step-1">
-                <div class="flex px-2 gap-2 mb-2 content-center justify-center">
-                    <div class="flex flex-col py-2 content-center justify-center ">
+                <div class="flex flex-col px-2 gap-2 mb-2 items-center justify-center">
+                    <div class="flex py-2 items-center justify-center ">
                         <p class="my-2 text-center w-[240px] h-[33px]">
-                            {{GoogleTranslate::trans('We are here for you in times of crisis.',session()->get('locale'))}}</p>
+                            {{GoogleTranslate::trans('We are here for you in times of crisis.',session()->get('locale'))}}
+                        </p>
+                    </div>
+                    <div>
+                        <img src="{{URL::asset('/images/mindtalk.svg')}}" alt="Outlined - Mind Talk">
                     </div>
                     
                 </div>
             </div>
             <div class="w-auto {{$currentStep == 2 ? 'block' : 'hidden'}}" id="step-2">
-                <div class="flex px-2 gap-2 mb-2 content-center justify-center">
-                    <div class="flex flex-col py-2 content-center justify-center ">
+                <div class="flex flex-col px-2 gap-2 mb-2 items-center justify-center">
+                    <div class="flex flex-col py-2 items-center justify-center ">
                         <p class="my-2 text-center w-[240px] h-[33px]">
-                            {{GoogleTranslate::trans('We will help you and your loved ones cope with this',session()->get('locale'))}}</p>
-                          
+                            {{GoogleTranslate::trans('We will help you and your loved ones cope with this',session()->get('locale'))}}
+                        </p>  
+                    </div>
+                    <div class="my-4">
+                        <img src="{{URL::asset('/images/OneLine-Heart.svg')}}" alt="Outlined - Heart">
                     </div>
                     
                 </div>
@@ -46,8 +53,8 @@
 
             {{-- Choose Country - Step 3 --}}
             <div class="w-auto {{$currentStep == 3 ? 'block' : 'hidden'}}" id="step-3">
-                <div class="flex px-2 gap-2 mb-2 content-center justify-center">
-                    <div class="flex flex-col py-2 content-center justify-center ">
+                <div class="flex px-2 gap-2 mb-2 items-center justify-center">
+                    <div class="flex flex-col py-2 items-center justify-center ">
                         <p class="my-2 text-center w-60">
                             {{GoogleTranslate::trans('To provide the best Information we need to know which country you are in:',session()->get('locale'))}}</p>
                         <div class="flex flex-col justify-center items-center pt-4">
@@ -55,24 +62,26 @@
                             <select wire:model="country" id="country" class="box-bg py-2 px-4 my-1 rounded-full cursor-pointer block focus:ring-blue-500 focus:border-blue-500" name="country">
                                 <option selected>{{GoogleTranslate::trans('Select Country',session()->get('locale'))}}</option>
                                 <option value="Afghanistan">Afghanistan</option>
-                                <option value="Netherland">The Netherland</option>
-                                <option value="Ireland">Ireland</option>
                                 <option value="Australia">Australia</option>
-                                <option value="United Kingdom">United Kingdom</option>
-                                <option value="Norway">Norway</option>
                                 <option value="Denmark">Denmark</option>
-                                <option value="Japan">Japan</option>
-                                <option value="Sweden">Sweden</option>
-                                <option value="Rwanda">Rwanda</option>
+                                <option value="Greenland">Greenland</option>
                                 <option value="Iran">Iran</option>
-                                <option value="Pakistan">Pakistan</option>
+                                <option value="Ireland">Ireland</option>
+                                <option value="Japan">Japan</option>
                                 <option value="Kenya">Kenya</option>
                                 <option value="Malawi">Malawi</option>
+                                <option value="Norway">Norway</option>
+                                <option value="Pakistan">Pakistan</option>
+                                <option value="Rwanda">Rwanda</option>
                                 <option value="Spain">Spain</option>
-                                <option value="Greenland">Greenland</option>
+                                <option value="Sweden">Sweden</option>
+                                <option value="Netherland">The Netherlands</option>
+                                <option value="United Kingdom">United Kingdom</option>
                             </select>
                         </div>
-                           
+                        <div>
+                            <img src="{{URL::asset('/images/OneLine-World.svg')}}" alt="Outlined - World">
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -82,7 +91,7 @@
             {{-- End Step 3 --}}
             {{-- Step 4 --}}
             <div class="w-auto {{$currentStep == 4 ? 'block' : 'hidden'}} mt-6 mb-4" id="step-3">
-                <div class="flex px-2 gap-2 mb-2 content-center justify-center flex-col">
+                <div class="flex px-2 gap-2 mb-2 items-center justify-center flex-col">
                     <div class="w-auto mt-4 flex justify-center flex-col items-center">
                         <a href="/help"><span class="material-icons-outlined text-orange-300 text-7xl">health_and_safety</span></a>
                         <p class="mb-2 text-center w-60 h-11">{{GoogleTranslate::trans('Press the shield icon, if you are in an acute mental crisis.',session()->get('locale'))}}</p>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Emergencyroom;
-use Illuminate\Contracts\Session\Session;
 use Livewire\Component;
+use App\Models\Emergencyroom;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\Session\Session;
 
 class CareTips extends Component
 {
@@ -13,8 +14,10 @@ class CareTips extends Component
 
     public function render()
     {
+
         return view('livewire.care-tips', [
-            'emergency_data' => Emergencyroom::select('phone', 'website', 'country', 'name')->where('country', session()->get('country'))->get()
+            'emergency_data' => DB::table('emergencyrooms')->select('phone', 'website', 'name')->where('country', session()->get('country'))->get(),
+            'phoneNumber' => Emergencyroom::select('phone')->where('country', session()->get('country'))->first(),
         ])->layout('layouts.guest');
     }
 

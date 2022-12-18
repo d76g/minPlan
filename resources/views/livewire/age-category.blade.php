@@ -4,13 +4,12 @@
             if(session()->missing('locale')){
                 session()->put('locale','en');
             }
-
             if(session()->get('locale',''))
             {
                 session()->put('locale',session()->get('locale' ?? 'en'));
             }
     @endphp
-    <div class="w-full h-[93vh] text-sm sm:text-base flex flex-col overflow-hidden">
+        <div class="w-auto h-[93vh] text-sm sm:text-base flex flex-col">
         <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
         {{-- Content Container --}}
         <div class="relative flex items-center flex-col w-full h-[80vh] mainColor my-7">
@@ -74,25 +73,32 @@
             </div>
             {{-- End of Step 2 --}}
             {{-- Step 3 --}}
+            @php
+                $country = session()->get('country');
+            @endphp
             <div class="relative flex flex-col items-center {{$currentStep == 3 ? 'block' : 'hidden'}}">
                 <p class="mb-5 text-center w-80">{{GoogleTranslate::trans('There are also different hotlines and safe spaces where you can look for help.',session()->get('locale'))}}</p>
                 <p class="mb-5 text-center w-80">{{GoogleTranslate::trans('Sometimes you have the option of being anonymous if you ask about it.',session()->get('locale'))}}</p>
+                @if ($emergency_data->isEmpty())
+                <p class="my-1 p-1 bg-slate-200 rounded-md text-xs text-center text-cyan-700">{{GoogleTranslate::trans('Oh Sorry!, no Emergency Contacts, available yet.',session()->get('locale'))}}</p>
+                @else
                 <div class="w-60 text-sm text-black my-1">
-                    <p>{{GoogleTranslate::trans('You can start by calling one of these',session()->get('locale'))}}</p>
+                    <p>{{GoogleTranslate::trans("You can start by calling one of these in {$country}",session()->get('locale'))}}</p>
                     <ul class="list-inside">
-                        <li class="py-1">XXX</li>
-                        <li class="py-1">XXX</li>
-                        <li class="py-1">XXX</li>
+                        @foreach ($emergency_data as $data)
+                        <li class="py-1">{{$data->phone}}</li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="w-60 text-sm text-black">
                   <p>{{GoogleTranslate::trans('Or, trying to visit these places',session()->get('locale'))}}</p>
                   <ul class="list-inside">
-                    <li class="py-1">XXX</li>
-                    <li class="py-1">XXX</li>
-                    <li class="py-1">XXX</li>
+                    @foreach ($emergency_data as $data)
+                        <a href="{{$data->website}}" target="_blank"><li class="py-1 text-blue-500 sm:hover:underline">{{$data->name}}</li></a>
+                    @endforeach
                 </ul>
                 </div>
+                @endif
             </div>
             {{-- End of Step 3 --}}
             {{-- Step 4 for age 14 -17 --}}
@@ -111,7 +117,7 @@
                 </div>
                 <div class="flex flex-col h-44 w-60 justify-center items-center mt-4 sm:mt-6">
                     <div>
-                        <img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App">
+                        <a href="/downloadApp" target="_blank"><img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App"></a>
                     </div>
                     <p class="w-24 h-8 text-sm text-center my-3">Download Minplan App</p>
                 </div>
@@ -189,7 +195,7 @@
                 </div>
                 <div class="flex flex-col h-44 w-60 justify-center items-center mt-4 sm:mt-6">
                     <div>
-                        <img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App">
+                        <a href="/downloadApp" target="_blank"><img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App"></a>
                     </div>
                     <p class="w-24 h-8 text-sm text-center my-3">Download Minplan App</p>
                 </div>
@@ -240,7 +246,7 @@
                 </div>
                 <div class="flex flex-col h-44 w-60 justify-center items-center mt-4 sm:mt-6">
                     <div>
-                        <img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App">
+                        <a href="/downloadApp" target="_blank"><img class="w-24 sm:w-full" src="{{URL::asset('/images/MinplanApp.svg')}}" alt="Minplan App"></a>
                     </div>
                     <p class="w-24 h-8 text-sm text-center my-3">Download Minplan App</p>
                 </div>
@@ -251,7 +257,7 @@
             {{-- End of Steps Container --}}
         </div>
         {{-- Stepper --}}
-        <div class="static w-auto mt-4 sm:mt-0 flex justify-center items-center {{$currentStep <= 7 ? 'block' : 'hidden'}}">
+        <div class="w-auto h-14 flex justify-center items-center {{$currentStep <= 7 ? 'block' : 'hidden'}}">
             <div>
                 <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl mainColor"></i></button>
             </div>
