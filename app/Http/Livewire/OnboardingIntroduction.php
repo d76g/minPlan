@@ -55,12 +55,13 @@ class OnboardingIntroduction extends Component
     }
     public function goBack()
     {
-        if ($this->currentStep == 1) {
-            $this->currentStep = 1;
+        $currentStep = session()->get('introPageCurrentStep');
+        if ($currentStep == 1) {
+            $currentStep = 1;
         } else {
-            $this->currentStep--;
+            $currentStep--;
         }
-        session()->put('introPageCurrentStep', $this->currentStep);
+        session()->put('introPageCurrentStep', $currentStep);
     }
     public string $language = '';
     public function translate()
