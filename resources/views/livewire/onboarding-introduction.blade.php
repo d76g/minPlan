@@ -12,13 +12,19 @@
             $currentStep = session()->get('introPageCurrentStep') ?? 1;
     @endphp
 {{-- Main Container --}}
-<div class="flex flex-col w-full h-screen text-base sm:text-base overflow-hidden">
+<div class="flex flex-col w-full h-auto text-base sm:text-base overflow-hidden">
     {{-- Content Container --}}
-    <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
+    <div class="flex flex-row justify-center items-center mx-auto w-full h-full sm:h-screen relative">
+    {{-- Back Icon--}}
+    <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pl-6 sm:pl-0 sm:justify-start items-center mainColor">
+        <div>
+            <button type="button" class="{{$currentStep > 1  ? 'block':'hidden'}}" wire:click="goBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
+        </div>
+    </div>
     {{-- Form --}}
-    <div class="relative flex items-center flex-col w-full h-[80vh] my-7">
+    <div class="relative flex items-center flex-col w-4/5 h-[90vh] my-7">
          {{-- Logo --}}
-         <div class="relative w-32 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
+         <div class="relative w-24 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
             <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
         </div>  
         <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">  
@@ -80,13 +86,14 @@
                             </select>
                         </div>
                         <div>
+                            @error('country') <span class="error text-red-400 text-xs">{{GoogleTranslate::trans($message,session()->get('locale'))}}</span> @enderror
+                        </div>
+                        <div>
                             <img src="{{URL::asset('/images/OneLine-World.svg')}}" alt="Outlined - World">
                         </div>
                     </div>
                 </div>
-                <div>
-                    @error('country') <span class="error text-red-400 text-xs">{{GoogleTranslate::trans($message,session()->get('locale'))}}</span> @enderror
-                </div>
+                
             </div>
             {{-- End Step 3 --}}
             {{-- Step 4 --}}
@@ -102,47 +109,41 @@
                     </div>
                 </div>
             </div>
-                
-            
             {{-- End Step 4 --}}
-                  
             {{-- End of Steps --}}
+            </div>
+            {{-- Stepper --}}
+            <div class="w-44 flex justify-center items-center sm:mt-10 h-[10vh]">
+                <div class="flex justify-center items-center">
+                    
+                        @if ($currentStep == 1)
+                        <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
+                        @else
+                        <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
+                        @endif
+
+                        @if ($currentStep == 2)
+                        <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
+                        @else
+                        <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
+                        @endif
+
+                        @if ($currentStep == 3)
+                        <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
+                        @else
+                        <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
+                        @endif
+                        @if ($currentStep == 4)
+                        <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
+                        @else
+                        <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
+                        @endif
+                    
                 </div>
             </div>
-            {{-- Buttons --}}
-            <div class="static w-auto mt-4 sm:mt-0 flex justify-center items-center mainColor">
-                {{-- Back --}}
-                <div>
-                    <button type="button" class="{{$currentStep > 1  ? 'block':'hidden'}}" wire:click="goBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
-                </div>
-                <div class="w-44 flex justify-center items-center ">
-                    <div class="flex justify-center items-center">
-                        
-                            @if ($currentStep == 1)
-                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
-                            @else
-                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
-                            @endif
-
-                            @if ($currentStep == 2)
-                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
-                            @else
-                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
-                            @endif
-
-                            @if ($currentStep == 3)
-                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
-                            @else
-                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
-                            @endif
-                            @if ($currentStep == 4)
-                            <div class="mx-2 w-4 h-4 bg-mainColor rounded-full mt-1"></div>
-                            @else
-                            <div class="mx-2 w-4 h-4 box-bg rounded-full mt-1"></div>
-                            @endif
-                        
-                    </div>
-                </div>
+            </div>
+            {{-- Next Icon --}}
+            <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pr-6 sm:pr-0 sm:justify-end items-center mainColor">
                 <div>
                     <button type="button" class="{{$currentStep == 1 ? 'block':'hidden'}}" wire:click="welcomePage"><i class="fas fa-chevron-right fa-2x sm:fa-3x "></i></button>
                     <button type="button" class="{{$currentStep == 2 ? 'block':'hidden'}}" wire:click="infoPage"><i class="fas fa-chevron-right fa-2x sm:fa-3x "></i></button>

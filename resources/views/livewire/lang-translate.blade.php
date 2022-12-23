@@ -2,9 +2,7 @@
 <div class="absolute z-30 w-full h-12 flex justify-between">
 <div class="flex justify-between w-full">
     <div class="flex items-center text-stone-600 bg-white mt-4 ml-3 rounded-md py-2 px-3 hover:text-black transition ease-in-out hover:-translate-x-1 cursor-pointer">
-        <a onclick="previousURL();" class="flex items-center justify-start"><i class="fa-solid fa-angle-left fa-xl"></i>
-            <p class="text-xs px-1">{{GoogleTranslate::trans('Back', session()->get('locale') ?? app()->getLocale())}}</p>
-        </a>
+        <a href='/' class="flex items-center justify-start"><i class="fas fa-home fa-xl"></i></a>
     </div>
     <div class="flex justify-end mr-3">
         <div x-data="{ showDropdown: false}" class="flex flex-row-reverse" id="langMenu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
