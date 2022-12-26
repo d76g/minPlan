@@ -12,7 +12,7 @@
             $currentStep = session()->get('introPageCurrentStep') ?? 1;
     @endphp
 {{-- Main Container --}}
-<div class="flex flex-col w-full h-auto text-base sm:text-base overflow-hidden">
+<div class="w-full h-auto text-base sm:text-base overflow-hidden">
     {{-- Content Container --}}
     <div class="flex flex-row justify-center items-center mx-auto w-full h-full sm:h-screen relative">
     {{-- Back Icon--}}
@@ -89,7 +89,9 @@
                             @error('country') <span class="error text-red-400 text-xs">{{GoogleTranslate::trans($message,session()->get('locale'))}}</span> @enderror
                         </div>
                         <div>
-                            <img src="{{URL::asset('/images/OneLine-World.svg')}}" alt="Outlined - World">
+                            <div class="-translate-x-20">
+                                <img src="{{URL::asset('/images/OneLine-World.svg')}}" alt="Outlined - World">
+                            </div>
                         </div>
                     </div>
                 </div>

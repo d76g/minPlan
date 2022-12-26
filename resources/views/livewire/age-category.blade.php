@@ -9,12 +9,18 @@
                 session()->put('locale',session()->get('locale' ?? 'en'));
             }
     @endphp
-        <div class="w-auto h-[93vh] text-sm sm:text-base flex flex-col">
-        <div class="flex flex-col justify-center items-center mx-auto h-screen relative">
+        <div class="w-full h-auto text-base sm:text-base overflow-hidden">
+        <div class="flex justify-center items-center mx-auto w-full h-full sm:h-screen relative">
+        {{-- Next Button --}}
+        <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pl-6 sm:pl-0 sm:justify-start items-center mainColor">
+            <div>
+                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl mainColor"></i></button>
+            </div>
+        </div>
         {{-- Content Container --}}
-        <div class="relative flex items-center flex-col w-full h-[80vh] mainColor my-7">
-            <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
-                <img src="{{URL::asset('/images/outline_health_and_safety.svg')}}" alt="Guidance Icon">
+        <div class="relative flex items-center flex-col w-4/5 h-[90vh] mainColor my-7">
+            <div class="relative flex justify-center items-center sm:h-28 h-16 mt-6 mb-2 sm:my-4">
+                <img src="{{URL::asset('/images/outline_health_and_safety.svg')}}" alt="Guidance Icon" class="sm:w-20 sm:h-20 h-16 w-16">
             </div>
             {{-- Steps Container --}}
             <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">
@@ -77,8 +83,8 @@
                 $country = session()->get('country');
             @endphp
             <div class="relative flex flex-col items-center {{$currentStep == 3 ? 'block' : 'hidden'}}">
-                <p class="mb-5 text-center w-80">{{GoogleTranslate::trans('There are also different hotlines and safe spaces where you can look for help.',session()->get('locale'))}}</p>
-                <p class="mb-5 text-center w-80">{{GoogleTranslate::trans('Sometimes you have the option of being anonymous if you ask about it.',session()->get('locale'))}}</p>
+                <p class="mb-5 text-center sm:w-80 w-60">{{GoogleTranslate::trans('There are also different hotlines and safe spaces where you can look for help.',session()->get('locale'))}}</p>
+                <p class="mb-5 text-center sm:w-80 w-60">{{GoogleTranslate::trans('Sometimes you have the option of being anonymous if you ask about it.',session()->get('locale'))}}</p>
                 @if ($emergency_data->isEmpty())
                 <p class="my-1 p-1 bg-slate-200 rounded-md text-xs text-center text-cyan-700">{{GoogleTranslate::trans('Oh Sorry!, no Emergency Contacts, available yet.',session()->get('locale'))}}</p>
                 @else
@@ -128,10 +134,10 @@
             @if ($age !== '14-17')
             <div class="relative flex flex-col items-center {{$currentStep == 4 ? 'block' : 'hidden'}} text-start text-sm">
                             
-                <p class="mb-2 sm:mb-4 w-80 text-center text-black">{{GoogleTranslate::trans("Most often a crisis are the result of feelings you can't cope with.",session()->get('locale'))}}</p>
-                <p class="mb-2 sm:mb-4 w-80 text-center">{{GoogleTranslate::trans("A crisis may occur facing what seems to be an overwhelming life situation. ",session()->get('locale'))}}</p>
+                <p class="mb-2 sm:mb-4 sm:w-80 w-60 text-center text-black">{{GoogleTranslate::trans("Most often a crisis are the result of feelings you can't cope with.",session()->get('locale'))}}</p>
+                <p class="mb-2 sm:mb-4 sm:w-80 w-60 text-center">{{GoogleTranslate::trans("A crisis may occur facing what seems to be an overwhelming life situation. ",session()->get('locale'))}}</p>
                 
-            <div class="flex flex-col w-80 text-xm text-black">
+            <div class="flex flex-col sm:w-80 w-60 text-xm text-black">
                 <p class="leading-loose underline underline-offset-4 text-center">
                     {{GoogleTranslate::trans('Which could be:',session()->get('locale'))}}</p>
                 
@@ -162,7 +168,7 @@
             @if ($age !== '14-17')
             <div class="relative flex flex-col items-center {{$currentStep == 5 ? 'block' : 'hidden'}} text-start text-black">
                             
-                <p class="mb-10 w-60 text-center">{{GoogleTranslate::trans("In a time of crisis or 
+                <p class="mb-10 sm:w-80 w-60 text-center">{{GoogleTranslate::trans("In a time of crisis or 
                     in a period of life,it is normal to:",session()->get('locale'))}}</p>
                 <div class="grid grid-rows-4 w-60 ">
                     <p class="leading-loose flex"><span class="mainColor pt-1 material-icons-round">check</span>
@@ -182,7 +188,7 @@
             {{-- Start of Step 6 for 18-25 --}}
             @if ($age == '18-25')
             <div class="relative flex flex-col items-center justify-evenly {{$currentStep == 6 ? 'block' : 'hidden'}}">
-                <div class="flex flex-col gap-y-4 w-60 text-center text-sm sm:text-base">
+                <div class="flex flex-col gap-y-4 sm:w-80 w-60 text-center text-sm sm:text-base">
                     <div>
                         <p>{{GoogleTranslate::trans('Make yourself a safety plan',session()->get('locale'))}} </p>
                     </div>
@@ -207,7 +213,7 @@
             <div class="relative flex flex-col items-center {{$currentStep == 6 ? 'block' : 'hidden'}} text-start text-sm">            
                 <p class="mb-2 sm:mb-4 w-64 text-center text-black">{{GoogleTranslate::trans("In these situation it is very important to prioritize some form of connection with other people.",session()->get('locale'))}}</p>
                 
-            <div class="flex flex-col w-72 text-xm text-black">
+            <div class="flex flex-col sm:w-80 w-60 text-xm text-black">
                 <p class="leading-loose underline underline-offset-4 text-center">
                     {{GoogleTranslate::trans(' You can:',session()->get('locale'))}}</p>
                 
@@ -233,7 +239,7 @@
             {{-- Step 7 for other ages --}}
             @if ($age !== '14-17' && $age !== '18-25')
             <div class="relative flex flex-col items-center justify-evenly {{$currentStep == 7 ? 'block' : 'hidden'}}">
-                <div class="flex flex-col gap-y-4 w-60 text-center text-sm sm:text-base">
+                <div class="flex flex-col gap-y-4 sm:w-80 w-60 text-center text-sm sm:text-base">
                     <div>
                         <p>{{GoogleTranslate::trans('Make yourself a safety plan',session()->get('locale'))}} </p>
                     </div>
@@ -255,12 +261,6 @@
             {{-- End of Step 7 --}}
             </div>
             {{-- End of Steps Container --}}
-        </div>
-        {{-- Stepper --}}
-        <div class="w-auto h-14 flex justify-center items-center {{$currentStep <= 7 ? 'block' : 'hidden'}}">
-            <div>
-                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2xl mainColor"></i></button>
-            </div>
             <div class="w-56 flex justify-center items-center {{$currentStep <= 7 && $currentStep > 1 ? 'block' : 'hidden'}}">
                 <div class="flex justify-center items-center">
                     
@@ -306,6 +306,11 @@
                         
                 </div>
             </div>
+        </div>
+        {{-- Stepper --}}
+        <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pr-6 sm:pr-0 sm:justify-end items-center mainColor">
+            
+           
             <div>
                 @if ($age == '14-17')
                     <button type="button"  class="{{$currentStep < 4 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2xl mainColor"></i></button>

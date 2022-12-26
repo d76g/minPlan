@@ -10,9 +10,15 @@
         session()->put('locale',session()->get('locale' ?? 'en'));
     }
     @endphp
-        <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex flex-col emergencyColor">
-        {{-- Content Container --}}
-        <div class="relative flex items-center flex-col w-auto h-full">
+        <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex emergencyColor overflow-hidden">
+        <div class="flex flex-row justify-center items-center mx-auto w-full h-full sm:h-screen relative">
+            {{-- Content Container --}}
+        <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pl-6 sm:pl-0 sm:justify-start items-center">
+            <div>
+                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
+            </div>
+        </div>
+        <div class="relative flex items-center flex-col w-4/5 h-[90vh] my-7">
             <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
                 <span class="material-icons-outlined text-6xl">health_and_safety</span>
             </div>
@@ -111,13 +117,7 @@
             {{-- End of Step 4 --}}
             </div>
             {{-- End of Steps Container --}}
-        </div>
-        {{-- Stepper --}}
-        <div class="w-auto h-14 flex justify-center items-center {{$currentStep <= 4 ? 'block' : 'hidden'}}">
-            <div>
-                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
-            </div>
-            <div class="w-44 flex justify-center items-center">
+            <div class="w-44 flex justify-center items-center sm:mt-10 h-[10vh]">
                 <div class="flex justify-center items-center">
                     
                         @if ($currentStep == 1)
@@ -142,13 +142,15 @@
                         @else
                         <div class="mx-2 w-4 h-4 bg-orange-100 rounded-full mt-1"></div>
                         @endif
-                        
-                    
                 </div>
             </div>
+        </div>
+        {{-- Stepper --}}
+        <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pr-6 sm:pr-0 sm:justify-end items-center">
             <div>
                 <button type="button" class="{{$currentStep <= 3 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2x sm:fa-3x "></i></button>
             </div>
         </div>
+     </div>
     </div>
 <script src="{{asset('js/helpPage.js')}}"></script>
