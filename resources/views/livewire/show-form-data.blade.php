@@ -1,5 +1,4 @@
 @section('title', 'Form Data')
-<x-app-layout>
   @include('layouts.navigation')
 
 <div class="overflow-x-auto relative mt-4 border-t-4 border-indigo-500">
@@ -35,5 +34,8 @@
           
         </tbody>
       </table>
+      <div class="px-6 my-4">
+        {{$responces->links()}}
+      </div>
+      
 </div>
-</x-app-layout>

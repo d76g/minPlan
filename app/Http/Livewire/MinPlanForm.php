@@ -3,9 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use Illuminate\Http\Request;
 use App\Models\minPlanFormModel;
-use Illuminate\Support\Facades\App;
 
 class MinPlanForm extends Component
 {
@@ -184,6 +182,6 @@ class MinPlanForm extends Component
     }
     public function render()
     {
-        return view('livewire.min-plan-form');
+        return view('livewire.min-plan-form')->layout('layouts.guest');
     }
 }

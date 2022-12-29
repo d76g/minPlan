@@ -16,8 +16,6 @@
         {{-- Google Icons --}}
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-        <!-- Styles -->
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {{-- CSS Animation --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         @vite(['resources/css/app.css', 'resources/js/app.js'])

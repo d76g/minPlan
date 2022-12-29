@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\CareTips;
 use App\Http\Livewire\AgeCategory;
+use App\Http\Livewire\EmergencyContacts;
 use App\Http\Livewire\MinPlanForm;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\OnboardingIntroduction;
@@ -27,6 +28,7 @@ Route::get('/admin/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/admin/formdata', ShowFormData::class)->middleware(['auth', 'verified'])->name('formData');
+Route::get('/admin/emergencycontacts', EmergencyContacts::class)->middleware(['auth', 'verified'])->name('contacts');
 
 require __DIR__ . '/auth.php';
 
