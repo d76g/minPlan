@@ -9,9 +9,10 @@
         "guzzlehttp/guzzle": "^7.5",
         "laravel/breeze": "*",
         "laravel/framework": "^9.19",
+        "laravel/jetstream": "*",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10",
+        "livewire/livewire": "^2.5",
         "stichoza/google-translate-php": "^4.1"
     },
     "require-dev": {
