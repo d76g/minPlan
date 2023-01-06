@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('post_code');
             $table->string('city');
             $table->string('country');
+            $table->string('latitude');
+            $table->string('longitude');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
             $table->string('website')->nullable();

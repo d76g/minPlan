@@ -80,7 +80,7 @@
                     <div class="flex px-2 content-center justify-center text-xs w-44 h-40">
                         <div class="radio-button flex flex-col py-2 content-center justify-center ">
                             <p class="my-2 text-center">What is your main priorities right now ?</p>
-                            <input type="radio" id="invited" value="invited" name="priority" wire:model="priority" class="hidden" onclick="changeColor();">
+                            <input type="radio" id="invited" value="invited" name="priority" wire:model="priority" class="hidden">
                             <label for="invited" id="invited-label" class="border-[1px] border-gray-300 py-2 px-2 my-0.5 rounded-full text-center cursor-pointer hover:bg-gray-200 select-none">
                                     Invited by Someone
                             </label>                            
@@ -338,20 +338,19 @@
         </div>
     </div>
     @push('scripts')
-        <script>
-            window.addEventListener('submit', function(event){
-            Swal.fire({
-            title:event.detail.title,
-            icon:event.detail.icon,
-            iconColor:event.detail.iconColor,
-            timer: 3000,
-            width:'24em',
-            toast:true,
-            position:'top-end',
-            timerProgressBar:true,
-            showConfirmButton:false,
-        });
-    })
-        </script>
+    <script>
+        window.addEventListener('submit', function(event){
+          Swal.fire({
+          title:event.detail.title,
+          icon:event.detail.icon,
+          iconColor:event.detail.iconColor,
+          timer: 3000,
+          width:'24em',
+          toast:true,
+          position:'top-end',
+          timerProgressBar:true,
+          showConfirmButton:false,
+      });
+  })
+  </script>
     @endpush
-<script src="{{asset('js/app.js')}}"></script>

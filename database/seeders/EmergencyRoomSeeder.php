@@ -23,6 +23,8 @@ class EmergencyRoomSeeder extends Seeder
                 'post_code' => 'R93 V603',
                 'city' => 'Carlow',
                 'country' => 'Ireland',
+                'latitude' => '52.8426144',
+                'longitude' => '-6.9290847',
                 'phone' => '0818300365',
                 'email' => 'info@caredoc.ie',
                 'website' => 'https://www.caredoc.ie/',
@@ -33,6 +35,8 @@ class EmergencyRoomSeeder extends Seeder
                 'post_code' => 'V95 XP38',
                 'city' => 'Clare',
                 'country' => 'Ireland',
+                'latitude' => '52.708258',
+                'longitude' => '-9.317114',
                 'phone' => '0818123500',
                 'email' => 'null',
                 'website' => 'http://www.shannondoc.ie'

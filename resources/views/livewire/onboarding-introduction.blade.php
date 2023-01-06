@@ -22,11 +22,12 @@
         </div>
     </div>
     {{-- Form --}}
-    <div class="relative flex items-center flex-col w-4/5 h-[90vh] my-7">
+    <div class="relative flex items-center flex-col w-4/5 h-screen my-7">
          {{-- Logo --}}
          <div class="relative w-24 md:w-36 h-50 {{$currentStep <=4  ? 'block':'hidden'}}">
             <img src="{{URL::asset('images/MP-LOGO-Final.png')}}" alt="Minplan Logo">
         </div>  
+        {{-- Form --}}
         <div class="relative flex justify-center items-center flex-col h-130 sm:h-150 w-60 sm:w-72">  
         {{-- Welcome Page --}}
             <div class="w-auto {{$currentStep == 1 ? 'block' : 'hidden'}}" id="step-1">

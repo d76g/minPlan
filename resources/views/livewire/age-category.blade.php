@@ -9,7 +9,7 @@
                 session()->put('locale',session()->get('locale' ?? 'en'));
             }
     @endphp
-        <div class="w-full h-auto text-base sm:text-base overflow-hidden">
+        <div class="w-full h-auto text-xs sm:text-base overflow-hidden">
         <div class="flex justify-center items-center mx-auto w-full h-full sm:h-screen relative">
         {{-- Next Button --}}
         <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pl-6 sm:pl-0 sm:justify-start items-center mainColor">

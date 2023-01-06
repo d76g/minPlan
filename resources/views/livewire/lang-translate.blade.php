@@ -1,13 +1,13 @@
 
 <div class="absolute z-30 w-full h-12 flex justify-between">
 <div class="flex justify-between w-full">
-    <div class="flex items-center mainColor bg-white mt-4 ml-3 rounded-md py-2 px-3 hover:text-black transition ease-in-out hover:-translate-y-1 cursor-pointer">
+    <div class="flex items-center mainColor mt-4 ml-3 rounded-md py-2 px-3 hover:text-black transition ease-in-out hover:-translate-y-1 cursor-pointer">
         <a href='/' class="flex items-center justify-start"><i class="fas fa-home fa-xl"></i></a>
     </div>
     <div class="flex justify-end mr-3">
         <div x-data="{ showDropdown: false}" class="flex flex-row-reverse" id="langMenu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <button @click="showDropdown = ! showDropdown " class="mt-4 mr-4">
-                <span class="material-icons-outlined mainColor hover:text-black bg-white p-1 rounded-md">translate</span>
+                <span class="material-icons-outlined mainColor hover:text-black p-1 rounded-md">translate</span>
             </button>
             
                 <span><i class="absolute top-12 right-9 fas fa-caret-up fa-1xl boxColor" x-show="showDropdown" x-cloak x-transition></i></span>

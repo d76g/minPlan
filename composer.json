@@ -6,12 +6,17 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "doctrine/dbal": "^3.5",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/breeze": "*",
         "laravel/framework": "^9.19",
+        "laravel/jetstream": "*",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.10",
+        "livewire/livewire": "^2.5",
+        "maatwebsite/excel": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.26",
+        "sabre/xml": "^4.0",
         "stichoza/google-translate-php": "^4.1"
     },
     "require-dev": {

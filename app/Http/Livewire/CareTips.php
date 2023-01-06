@@ -16,7 +16,12 @@ class CareTips extends Component
     {
 
         return view('livewire.care-tips', [
-            'emergency_data' => DB::table('emergencyrooms')->select('phone', 'website', 'name')->where('country', session()->get('country'))->get(),
+            'emergency_data' => DB::table('emergencyrooms')
+                ->select('phone', 'website', 'name')
+                ->where('country', session()->get('country'))
+                ->where('website', '!=', 'NULL')
+                ->take(2)
+                ->get(),
             'phoneNumber' => Emergencyroom::select('phone')->where('country', session()->get('country'))->first(),
         ])->layout('layouts.guest');
     }
