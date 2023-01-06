@@ -19,6 +19,7 @@ use App\Http\Livewire\ShowFormData;
 |
 */
 
+
 Route::get('/', function () {
     return redirect('/home');
 })->name('home');

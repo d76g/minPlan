@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --main-color:#41c0b7;
+    --box-color:#d6ede7;
+    --button-color:#d1d1d1;
+    
+}
+
+.mainColor {
+    color: var(--main-color);
+}
+
+.bg-mainColor{
+    background-color: var(--main-color);
+}
+.bg-selected{
+    background-color: #CFEFEC;
+}
+.bg-notSelected{
+    background-color: #E8EEEE;
+}
+.box-bg{
+    background-color: var(--box-color);
+}
+.boxColor{
+    color: var(--box-color);
+}
+.emergencyColor {
+    color: #E9AF64;
+}
+.radio-button input[type="radio"] {
+    display: none;
+}      
+.radio-button label {
+    display: inline-block;
+}      
+.radio-button input[type="radio"]:checked+label {
+    background-color: rgb(229 231 235);
+}

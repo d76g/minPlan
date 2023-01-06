@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Emergencyroom extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'address', 'post_code', 'city', 'country', 'phone', 'email', 'website'];
+    protected $fillable = ['name', 'address', 'post_code', 'city', 'country', 'latitude', 'longitude', 'phone', 'email', 'website'];
 }

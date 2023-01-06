@@ -180,6 +180,7 @@ class MinPlanForm extends Component
         Session()->get('locale');
         return back();
     }
+
     public function render()
     {
         return view('livewire.min-plan-form')->layout('layouts.guest');

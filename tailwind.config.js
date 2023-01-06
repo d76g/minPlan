@@ -14,6 +14,10 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            height: {
+                '130' : '70vh',
+                '150' : '80vh'
+            },
         },
     },
 

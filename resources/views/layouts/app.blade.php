@@ -5,40 +5,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>@yield('title') - MinPlan</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Scripts -->
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet">
+        {{-- Favicon --}}
+        <link rel="icon" href="{{asset('/images/minplan-favicon.png')}}">
+        {{-- Font-Awesome --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {{-- Google Icons --}}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+        {{-- CSS Animation --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        <!-- Styles -->
+        <style>
+            body {
+                font-family: 'Comfortaa', cursive;
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            [x-cloak] { display: none !important; }
+        </style>
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
-
-        <div class="min-h-screen bg-gray-100">
+    <body class="antialiased">
+        <div class="min-h-screen min-w-full">
             @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
+            @guest   
+                @livewire('lang-translate')
+            @endguest
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
+            @livewireScripts
+            @stack('modals')
+            @stack('scripts')
         </div>
-
-        @stack('modals')
-
-        @livewireScripts
     </body>
 </html>
