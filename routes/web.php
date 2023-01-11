@@ -2,6 +2,9 @@
 
 use App\Http\Livewire\CareTips;
 use App\Http\Livewire\AgeCategory;
+use App\Http\Livewire\AgeCategory\OldAgeAdults;
+use App\Http\Livewire\AgeCategory\Teens;
+use App\Http\Livewire\AgeCategory\YoungAdults;
 use App\Http\Livewire\EmergencyContacts;
 use App\Http\Livewire\MinPlanForm;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +25,7 @@ use App\Http\Livewire\ShowFormData;
 
 Route::get('/', function () {
     return redirect('/home');
-})->name('home');
+});
 
 
 Route::get('/admin/formdata', ShowFormData::class)->middleware(['auth', 'verified'])->name('formData');
@@ -30,28 +33,22 @@ Route::get('/admin/emergencycontacts', EmergencyContacts::class)->middleware(['a
 
 require __DIR__ . '/auth.php';
 
+
 Route::get('/home', OnboardingIntroduction::class)->name('home');
 Route::get('/home/guidance', AgeCategory::class)->name('Guidance');
+Route::get('/home/guidance/teens', Teens::class)->name('teens');
+Route::get('/home/guidance/young-adults', YoungAdults::class)->name('youngAdults');
+Route::get('/home/guidance/adults', OldAgeAdults::class)->name('adults');
 
-Route::get('/relative-advice', function () {
-    return view('relativeAdvice');
-});
 
 Route::get('/form', MinPlanForm::class)->name('form')->middleware('lang');
 Route::get('/help', CareTips::class)->name('help');
 
 
+
 Route::get('/downloadApp', function () {
     return view('downloadApp');
 })->name('downloadApp');
-
-Route::get('/underagehelp', function () {
-    return view('underageHelp');
-})->name('underageHelp');
-
-Route::get('/advices', function () {
-    return view('advices');
-})->name('advices');
 
 Route::middleware([
     'auth:sanctum',

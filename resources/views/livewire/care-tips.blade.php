@@ -10,26 +10,26 @@
         session()->put('locale',session()->get('locale' ?? 'en'));
     }
     @endphp
-        <div class="container relative w-auto h-[93vh] text-xs sm:text-base flex emergencyColor overflow-hidden">
-        <div class="flex flex-row justify-center items-center mx-auto w-full h-full sm:h-screen relative">
+        <div class="container relative w-auto flex emergencyColor overflow-hidden xs:text-xs sm:text-sm md:text-base">
+        <div class="flex flex-row sm:justify-center items-center mx-auto w-full h-full md:h-screen relative">
             {{-- Content Container --}}
         <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pl-6 sm:pl-0 sm:justify-start items-center">
             <div>
-                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2x sm:fa-3x"></i></button>
+                <button type="button"  class="{{$currentStep > 1 ? 'block':'hidden'}}" wire:click="stepBack"><i class="fas fa-chevron-left fa-2x sm:fa-4x"></i></button>
             </div>
         </div>
         <div class="relative flex items-center flex-col w-4/5 h-[90vh] my-7">
             <div class="relative flex justify-center items-center h-28 sm:h-16 mt-6 mb-2 sm:my-4">
-                <span class="material-icons-outlined text-6xl">health_and_safety</span>
+                <span class="material-icons-outlined xs:text-6xl sm:text-7xl">health_and_safety</span>
             </div>
             {{-- Steps Container --}}
             <div class="relative flex justify-center items-center flex-col h-[80vh] w-auto">
             {{-- Step 1 --}}
-            <di class="static flex flex-col items-center {{$currentStep == 1 ? 'block' : 'hidden'}}">
+            <div class="static text-xs flex flex-col items-center {{$currentStep == 1 ? 'block' : 'hidden'}}">
                 
-                <div class="flex flex-col items-center justify-center sm:text-base w-64 h-44 text-justify">
-                    <p class="py-2 leading-5">{{GoogleTranslate::trans('Think about your environment.',session()->get('locale'))}}</p>
-                    <p class="py-4 leading-5">{{GoogleTranslate::trans('The goal here is to reduce access to resources or items which can be used to cause harm.',session()->get('locale'))}}</p>
+                <div class="flex flex-col items-center justify-center sm:text-base xs:w-60 sm:w-64 h-44 text-justify">
+                    <p class="py-2 leading-5 text-center">{{GoogleTranslate::trans('Think about your sorrundings',session()->get('locale'))}}</p>
+                    <p class="py-4 leading-5">{{GoogleTranslate::trans('The goal is to reduce access to resources or items which can be used to cause you harm',session()->get('locale'))}}</p>
                     <p class="py-2 leading-5 text-center w-60" style="color: rgba(66, 192, 183, 1);">{{GoogleTranslate::trans("Press the items you've already secured:",session()->get('locale'))}}</p>
                 </div>
                 <div class="grid grid-cols-2 grid-rows-3 gap-x-1 items-center justify-center text-xs my-6" style="color: #476F6C">
@@ -40,20 +40,20 @@
                         <a id="sharp" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Sharp objects',session()->get('locale'))}}</a>
                         <a id="firearms" class="px-4 py-2 rounded-full bg-notSelected my-1 ">{{GoogleTranslate::trans('Firearms',session()->get('locale'))}}</a>
                 </div>
-                <div class="flex flex-col items-center justify-center">
-                    <p class="py-1 text-center w-64 h-14">{{GoogleTranslate::trans('Go away from locations which are unsafe or may be triggering unwanted behavior',session()->get('locale'))}}</p>
+                <div class="flex flex-col items-center justify-center xs:text-xs sm:text-sm md:text-base">
+                    <p class="py-1 text-center w-64">{{GoogleTranslate::trans('Move away from places that triggers somthing in you',session()->get('locale'))}}</p>
                 </div>
-            </di>
-            {{GoogleTranslate::trans('',session()->get('locale'))}}
+            </div>
             {{-- End of Step 1 --}}
             {{-- Step 3 --}}
             <div class="relative flex flex-col items-center {{$currentStep == 2 ? 'block' : 'hidden'}} text-start">
-                <p class="mb-10 w-60">{{GoogleTranslate::trans("Take up an conversation and don't be afradi to ask direct questions, such as:",session()->get('locale'))}}</p>
+                <p class="mb-10 w-60">{{GoogleTranslate::trans("Don’t be afraid to ask  these questions",session()->get('locale'))}}</p>
                 <div class="grid grid-rows-4 gap-y-3 w-60">
                     <p class="leading-5">{{GoogleTranslate::trans('Is this safe?',session()->get('locale'))}}</p>
                     <p class="leading-5">{{GoogleTranslate::trans('Can this situation be harmful?',session()->get('locale'))}}</p>
                     <p class="leading-5">{{GoogleTranslate::trans('Can you cope with this?',session()->get('locale'))}}</p>
                     <p class="leading-5">{{GoogleTranslate::trans('Are you thinking about self harming?',session()->get('locale'))}}</p>
+                    <p class="leading-5">{{GoogleTranslate::trans('Is it time to reach out for help?',session()->get('locale'))}}</p>
                 </div>
             </div>
             {{-- End of Step 2 --}}
@@ -62,8 +62,8 @@
                 <p class="mb-10 w-60">{{GoogleTranslate::trans('Please make sure that you:',session()->get('locale'))}}</p>
                 <div class="w-60">
                     <ul class="list-disc list-inside">
-                        <li class="py-1">{{GoogleTranslate::trans('Stay Calm.',session()->get('locale'))}}</li>
-                        <li class="py-1">{{GoogleTranslate::trans('Acknowledge that the feelings are legitimate',session()->get('locale'))}}</li>
+                        <li class="py-1">{{GoogleTranslate::trans('Stay as calm as possible.',session()->get('locale'))}}</li>
+                        <li class="py-1">{{GoogleTranslate::trans('acknowlegde that your feelings are allowed',session()->get('locale'))}}</li>
                         <li class="py-1">{{GoogleTranslate::trans('Encourage not to act upon the feelings',session()->get('locale'))}} </li>
                         <li class="py-1">{{GoogleTranslate::trans('Avoid confrontation',session()->get('locale'))}}</li>
                         <li class="py-1">{{GoogleTranslate::trans('Instill hope',session()->get('locale'))}}</li>
@@ -75,10 +75,10 @@
             <div class="relative flex flex-col items-center justify-evenly {{$currentStep == 4 ? 'block' : 'hidden'}}">
                 <div class="grid grid-rows-2 gap-4 w-60 text-center">
                     <div>
-                        <p>{{GoogleTranslate::trans('Please reach out for help, if you cant handle it.',session()->get('locale'))}} </p>
+                        <p>{{GoogleTranslate::trans('Please reach out for help if you can´t cope with your feelings alone.',session()->get('locale'))}} </p>
                     </div>
                     <div>
-                        <p>{{GoogleTranslate::trans('You can call somebody in the the network. Or ask for  professional assistance.',session()->get('locale'))}}</p>
+                        <p>{{GoogleTranslate::trans('Contact somebody in your network that you trust. Or use the professional assistance below.',session()->get('locale'))}}</p>
                     </div>
                 </div>
                 <div class="sm:hidden {{$phoneNumber == NULL ? '' : ' grid-cols-2 gap-x-4'}} grid h-44 w-52 justify-items-center content-center">
@@ -148,7 +148,7 @@
         {{-- Stepper --}}
         <div class="static w-1/12 mt-4 sm:mt-0 flex justify-center pr-6 sm:pr-0 sm:justify-end items-center">
             <div>
-                <button type="button" class="{{$currentStep <= 3 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2x sm:fa-3x "></i></button>
+                <button type="button" class="{{$currentStep <= 3 ? 'block':'hidden'}}" wire:click="nextStep"><i class="fas fa-chevron-right fa-2x sm:fa-4x "></i></button>
             </div>
         </div>
      </div>
