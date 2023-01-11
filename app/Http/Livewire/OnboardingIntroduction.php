@@ -10,7 +10,6 @@ class OnboardingIntroduction extends Component
 {
     public string $country = '';
     public $currentStep = 1;
-
     protected $listeners = ['translate'];
 
     protected $rules = [
